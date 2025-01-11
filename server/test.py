@@ -26,8 +26,20 @@ station_ids = [
     "4fba949c-cb8b-4bec-a5b0-9b26164d23c6",
 ]
 
-stations = stations_collection.find({"id": {"$in": station_ids}})
+start_date = datetime(2025, 1, 11, 22, 5)
+end_date = datetime(2025, 1, 11, 22, 10)
 
-# Print each station
+stations = stations_collection.find({
+    "timestamp": {
+        "$gte": start_date,
+        "$lt": end_date
+    },
+    "id": {
+        "$in": station_ids
+    }
+})
+
+# Print the result
 for station in stations:
     print(station)
+
