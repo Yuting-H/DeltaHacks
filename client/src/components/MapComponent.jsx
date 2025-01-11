@@ -5,11 +5,6 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 
 // Example marker data
-const markers = [
-  { position: [51.505, -0.09], popup: "Marker 1: Central London" },
-  { position: [51.515, -0.1], popup: "Marker 2: North London" },
-  { position: [51.495, -0.08], popup: "Marker 3: South London" },
-];
 
 // Utility Component to recenter the map
 const RecenterMap = ({ center }) => {
@@ -21,8 +16,8 @@ const RecenterMap = ({ center }) => {
 const MapComponent = ({ markers, center }) => {
   return (
     <MapContainer
-      center={center || [51.505, -0.09]}
-      zoom={13}
+      center={center || [43.265505, -79.918187]}
+      zoom={16}
       style={{ height: "100vh", width: "70%" }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
