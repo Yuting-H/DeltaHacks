@@ -1,11 +1,28 @@
 from fastapi import FastAPI
 import httpx
 import json
+from pymongo import MongoClient
+from pymongo.server_api import ServerApi
+from datetime import datetime
 from calculus import get_bounds_zoom_level
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+MONGO_DB_USER = os.getenv("MONGO_DB_USER")
+MONGO_DB_PASSWORD = os.getenv("MONGO_DB_PASSWORD")
+MONGO_DB_URI = os.getenv("MONGO_DB_URI")
 
 app = FastAPI()
 
 API_URL = "https://emobility.flo.ca/v3.0/map/markers/search"
+uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}"
+
+# MongoDB Client Setup
+client = MongoClient(uri, server_api=ServerApi('1'))
+db = client['betabase']  # Accessing the existing database 'betabase'
+stations_collection = db['stations']  # Accessing the 'stations' collection
 
 
 @app.post("/find_parks")
@@ -91,12 +108,17 @@ async def find_parks(input_data: dict):
     # Start with the initial bounds
     await zoom_into_cluster(bounds)
 
-    # Write unique parks to a file
-    with open("unique_parks.json", "w") as f:
-        parks_list = [json.loads(park) for park in unique_parks]  # Deserialize back to dict
-        json.dump(parks_list, f, indent=4)
+    # Insert unique parks into the MongoDB time-series collection
+    for park_json in unique_parks:
+        park = json.loads(park_json)
+        park['timestamp'] = datetime.utcnow()  # Add a timestamp for the time-series
+        park['metadata'] = {"location": park.get("name", "Unknown")}  # Add metadata (e.g., location name)
+
+        # Insert the park data into the time-series collection
+        stations_collection.insert_one(park)
+        print(park)
 
     return {
-        "message": "Parks have been successfully collected and stored in unique_parks.json.",
+        "message": "Parks have been successfully collected and stored in MongoDB (betabase.stations).",
         "total_parks": len(unique_parks)
     }
