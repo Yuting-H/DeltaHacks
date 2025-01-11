@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import httpx
+from calculus import get_bounds_zoom_level
 
 app = FastAPI()
 
@@ -13,7 +14,9 @@ async def find_parks(input_data: dict):
     zoom_level = 12  # Starting zoom level
     max_zoom = 20  # Define a maximum zoom level to prevent infinite loops
     bounds = input_data["bounds"]
-    print(bounds)
+
+    map_dim = {"height": 800, "width": 600}
+    print(get_bounds_zoom_level(bounds, map_dim))
 
     while zoom_level <= max_zoom:
         # Prepare the request payload
