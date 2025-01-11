@@ -369,3 +369,6 @@ __pycache__/
 *.py[cod]
 
 *.idea
+
+#virtualenv
+venv/
