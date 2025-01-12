@@ -1,179 +1,191 @@
-
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
-import httpx
-import json
+import logging
+from fastapi import FastAPI, HTTPException
+from geopy.distance import geodesic
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
-from datetime import datetime
-from calculus import get_bounds_zoom_level
 from dotenv import load_dotenv
 import os
-from geopy.distance import geodesic
-import os
-load_dotenv()
+import requests
+import re
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+
+# Load environment variables
+load_dotenv(dotenv_path="C:\\Users\\mckayz\\Documents\\DeltaHacks\\server\\.env")
 
 MONGO_DB_USER = os.getenv("MONGO_DB_USER")
 MONGO_DB_PASSWORD = os.getenv("MONGO_DB_PASSWORD")
 MONGO_DB_URI = os.getenv("MONGO_DB_URI")
-
-# Debugging: Print environment variables to verify they are loaded
-print(f"MONGO_DB_USER: {MONGO_DB_USER}")
-print(f"MONGO_DB_PASSWORD: {MONGO_DB_PASSWORD}")
-print(f"MONGO_DB_URI: {MONGO_DB_URI}")
-
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-API_URL = "https://emobility.flo.ca/v3.0/map/markers/search"
-uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}"
-
-# MongoDB Client Setup
-client = MongoClient(uri, server_api=ServerApi('1'))
-db = client['betabase']  # Accessing the existing database 'betabase'
-stations_collection = db['stations']  # Accessing the 'stations' collection
-
-
-@app.post("/find_parks")
-async def find_parks(input_data: dict):
-    """
-    Zoom into each cluster until parks are found and store all unique parks in a file.
-    """
-    bounds = input_data["bounds"]
-    unique_parks = set()  # Use a set to store unique parks by ID or unique identifier
-    zoom_level = get_bounds_zoom_level(bounds, {"height": 800, "width": 800})
-    print(f"Zoom level: {zoom_level}")
-
-    async def zoom_into_cluster(cluster_bounds, zoom_level=zoom_level, max_zoom=19):
-        """
-        Recursively zoom into clusters and collect parks.
-        """
-        while zoom_level <= max_zoom:
-            # Prepare the request payload
-            payload = {
-                "zoomLevel": zoom_level,
-                "bounds": {
-                    "southWest": {
-                        "latitude": cluster_bounds["SouthWest"]["Latitude"],
-                        "longitude": cluster_bounds["SouthWest"]["Longitude"]
-                    },
-                    "northEast": {
-                        "latitude": cluster_bounds["NorthEast"]["Latitude"],
-                        "longitude": cluster_bounds["NorthEast"]["Longitude"]
-                    }
-                },
-                "filter": {
-                    "networkIds": [],
-                    "connectors": None,
-                    "levels": [],
-                    "rates": [],
-                    "statuses": [],
-                    "minChargingSpeed": None,
-                    "maxChargingSpeed": None
-                }
-            }
-
-            # Query the API
-            async with httpx.AsyncClient() as client:
-                response = await client.post(API_URL, json=payload)
-                data = response.json()
-
-            # Parse response
-            parks = data.get("parks", [])
-            clusters = data.get("clusters", [])
-
-            # If parks are found, add them to the set
-            for park in parks:
-                unique_parks.add(json.dumps(park))  # Serialize to avoid duplication
-
-            # If no clusters remain, return
-            if not clusters:
-                return
-
-            # Otherwise, zoom into each cluster
-            for cluster in clusters:
-                cluster_lat = cluster["geoCoordinates"]["latitude"]
-                cluster_lon = cluster["geoCoordinates"]["longitude"]
-
-                # Define smaller bounds around the cluster's geoCoordinates
-                delta = 0.2  # Adjust this to control the zoom-in granularity
-                new_bounds = {
-                    "SouthWest": {
-                        "Latitude": cluster_lat - delta,
-                        "Longitude": cluster_lon - delta
-                    },
-                    "NorthEast": {
-                        "Latitude": cluster_lat + delta,
-                        "Longitude": cluster_lon + delta
-                    }
-                }
-
-                # Recursively zoom into the cluster
-                await zoom_into_cluster(new_bounds, zoom_level + 1, max_zoom)
-
-            # Break out of the loop once recursion handles all clusters
-            break
-
-    # Start with the initial bounds
-    await zoom_into_cluster(bounds)
-
-    # Insert unique parks into the MongoDB time-series collection
-    for park_json in unique_parks:
-        park = json.loads(park_json)
-        park['timestamp'] = datetime.utcnow()  # Add a timestamp for the time-series
-        park['metadata'] = {"location": park.get("name", "Unknown")}  # Add metadata (e.g., location name)
-
-        # Insert the park data into the time-series collection
-        stations_collection.insert_one(park)
-        print(park)
-
-
-# Construct MongoDB URI
-uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}/?retryWrites=true&w=majority"
+GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
 # MongoDB connection setup
+uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}/?retryWrites=true&w=majority"
 try:
     client = MongoClient(uri, server_api=ServerApi("1"))
-    db = client["betabase"]  # Access the database
-    stations_collection = db["stations"]  # Access the stations collection
-    print("MongoDB connection successful!")
+    db = client["betabase"]
+    stations_collection = db["stations"]
+    logging.info("Connected to MongoDB successfully.")
 except Exception as e:
-    raise Exception(f"Failed to connect to MongoDB: {e}")
+    logging.error(f"Failed to connect to MongoDB: {e}")
+    raise e
 
 app = FastAPI()
 
+# 1. Welcome Endpoint
 @app.get("/")
 async def root():
     """
-    Root endpoint providing API details.
+    Welcome endpoint for the EV Charging Finder API.
     """
     return {
         "message": "Welcome to the EV Charging Station Finder API!",
         "endpoints": {
-            "/stations": "Get stations within a given radius (params: lat, lon, radius_km)",
+            "/chargers-on-route": "Find chargers along a route (params: origin, destination, max_distance)",
+            "/stations": "Get stations within a radius (params: lat, lon, radius_km)",
             "/station/{station_id}": "Get details for a specific station by ID",
         },
     }
 
+# 2. Validate Address using Geocoding API
+def validate_address(address):
+    """
+    Validate an address using the Geocoding API and return lat/lng coordinates.
+    If the input is already in lat/lng format, bypass validation.
+    """
+    # Check if the input is already latitude/longitude
+    lat_lng_pattern = re.compile(r'^-?\d+(\.\d+)?,-?\d+(\.\d+)?$')
+    if lat_lng_pattern.match(address):
+        lat, lng = map(float, address.split(','))
+        return {"lat": lat, "lng": lng}
 
+    # Use Geocoding API for address validation
+    url = "https://maps.googleapis.com/maps/api/geocode/json"
+    params = {"address": address, "key": GOOGLE_MAPS_API_KEY}
+    response = requests.get(url, params=params)
+    data = response.json()
+    
+    logging.debug(f"Geocoding API response for {address}: {data}")
+
+    if data.get("status") != "OK":
+        error_message = data.get("error_message", "Unknown error")
+        logging.error(f"Geocoding API error: {data['status']} - {error_message}")
+        raise HTTPException(status_code=400, detail=f"400: Invalid address: {address}")
+    
+    return data["results"][0]["geometry"]["location"]
+
+# 3. Get Route Between Two Locations
+def get_route(origin, destination):
+    """
+    Get the route coordinates between an origin and destination.
+    """
+    # Validate origin and destination
+    origin_coords = validate_address(origin)
+    destination_coords = validate_address(destination)
+
+    # Call Directions API
+    url = "https://maps.googleapis.com/maps/api/directions/json"
+    params = {
+        "origin": f"{origin_coords['lat']},{origin_coords['lng']}",
+        "destination": f"{destination_coords['lat']},{destination_coords['lng']}",
+        "key": GOOGLE_MAPS_API_KEY,
+    }
+    response = requests.get(url, params=params)
+    data = response.json()
+
+    logging.debug(f"Google Maps Directions API response: {data}")
+
+    if data.get("status") != "OK":
+        error_message = data.get("error_message", "Unknown error")
+        logging.error(f"Failed to retrieve route: {data['status']} - {error_message}")
+        raise HTTPException(status_code=500, detail=f"Google Maps API error: {error_message}")
+
+    try:
+        return [
+            step["end_location"]
+            for route in data["routes"]
+            for leg in route["legs"]
+            for step in leg["steps"]
+        ]
+    except KeyError as e:
+        logging.error(f"Error parsing Google Maps API response: {e}")
+        raise HTTPException(status_code=500, detail="Error parsing route data.")
+
+
+# 4. Check if Charger is Near Route
+def is_near_route(charger_coords, route_coords, max_distance=0.1):
+    """
+    Determine if a charger is within the specified distance of the route.
+    """
+    for route_point in route_coords:
+        distance = geodesic(
+            (charger_coords["latitude"], charger_coords["longitude"]),
+            (route_point["lat"], route_point["lng"])
+        ).km
+        logging.debug(f"Distance from charger ({charger_coords}) to route point ({route_point}): {distance:.2f} km")
+        if distance <= max_distance:
+            return True
+    return False
+
+
+# 5. Chargers Along Route Endpoint
+@app.get("/chargers-on-route")
+async def get_chargers_on_route(origin: str, destination: str, max_distance: float = 0.1):
+    """
+    Find EV chargers along a route between origin and destination.
+    """
+    try:
+        logging.info(f"Received request: origin={origin}, destination={destination}, max_distance={max_distance}")
+
+        # Step 1: Get the route coordinates
+        route_coords = get_route(origin, destination)
+        logging.debug(f"Route coordinates: {route_coords}")
+
+        # Step 2: Fetch all chargers from MongoDB
+        chargers = list(stations_collection.find())  # Convert cursor to list
+        logging.debug(f"Fetched chargers: {chargers}")
+
+        # Step 3: Filter chargers near the route
+        chargers_near_route = []
+        for charger in chargers:
+            if is_near_route(charger["geoCoordinates"], route_coords, max_distance):
+                chargers_near_route.append({
+                    "id": charger["id"],
+                    "name": charger["name"],
+                    "geoCoordinates": charger["geoCoordinates"]
+                })
+
+        logging.debug(f"Filtered chargers near route: {chargers_near_route}")
+
+        if not chargers_near_route:
+            logging.warning("No chargers found along the route.")
+            raise HTTPException(status_code=404, detail="404: No chargers found along the route.")
+
+        return {
+            "route": route_coords,
+            "chargers": chargers_near_route
+        }
+
+    except Exception as e:
+        logging.error(f"Error in /chargers-on-route: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# 5. Get Stations Within Radius
 @app.get("/stations")
-async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 5.0):
+async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 0.5):
     """
     Get charging stations within a given radius (default: 5km) of provided coordinates.
     """
     user_location = (lat, lon)
     stations_within_radius = []
 
-    # Retrieve all stations from the database
     try:
+        # Retrieve all stations from the database
         stations = stations_collection.find()
+        logging.debug("Fetched stations from MongoDB.")
     except Exception as e:
+        logging.error(f"Error querying database: {e}")
         raise HTTPException(status_code=500, detail=f"Error querying database: {e}")
 
     for station in stations:
@@ -182,27 +194,17 @@ async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 
             station["geoCoordinates"]["longitude"],
         )
         distance = geodesic(user_location, station_location).km
-        print(f"Station ID: {station['id']}, Distance: {distance:.2f} km")  # Debugging line
         if distance <= radius_km:
-            station_info = {
+            stations_within_radius.append({
                 "id": station["id"],
                 "name": station["name"],
                 "geoCoordinates": station["geoCoordinates"],
                 "distance_km": round(distance, 2),
-                "stations": [
-                    {
-                        "id": substation["id"],
-                        "name": substation["name"],
-                        "status": substation["status"],
-                        "level": substation["level"],
-                        "freeOfCharge": substation["freeOfCharge"],
-                    }
-                    for substation in station["stations"]
-                ],
-            }
-            stations_within_radius.append(station_info)
+                "stations": station["stations"],
+            })
 
     if not stations_within_radius:
+        logging.warning("No charging stations found within the given radius.")
         raise HTTPException(
             status_code=404,
             detail="No charging stations found within the given radius.",
@@ -210,7 +212,7 @@ async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 
 
     return {"stations": stations_within_radius}
 
-
+# 6. Get Station Details by ID
 @app.get("/station/{station_id}")
 async def get_station_details(station_id: str):
     """
@@ -230,7 +232,9 @@ async def get_station_details(station_id: str):
                         "station": substation,
                     }
     except Exception as e:
+        logging.error(f"Error querying database: {e}")
         raise HTTPException(status_code=500, detail=f"Error querying database: {e}")
 
     # If no match is found
+    logging.warning("Charging station not found.")
     raise HTTPException(status_code=404, detail="Charging station not found.")

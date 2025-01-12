@@ -372,3 +372,6 @@ __pycache__/
 
 #virtualenv
 venv/
+
+# Ignore environment variables
+.env
