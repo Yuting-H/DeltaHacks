@@ -24,9 +24,9 @@ const RecenterMap = ({ center }) => {
 const MapComponent = ({ markers, setMarkers, center }) => {
   const mapRef = useRef();
 
-  const addMarker = (newMarkers) => {
-    console.log("Adding marker", newMarkers);
-    setMarkers(newMarkers);
+  // Function to add a new marker
+  const addMarker = (position, popup) => {
+    setMarkers((prevMarkers) => [...prevMarkers, { position, popup }]);
   };
 
   const LogBounds = () => {
@@ -62,29 +62,28 @@ const MapComponent = ({ markers, setMarkers, center }) => {
           },
         };
 
-        axios
-          .get(
-            "http://localhost:8000/stations?lat=43.260402&lon=-79.924763&radius_km=2"
-          )
-          .then((response) => {
-            console.log("Response:", response.data.stations);
-            setMarkers([]);
-            let newMarkers = [];
-            response.data.stations.forEach((element) => {
-              console.log(element);
-              newMarkers.push({
-                position: [
-                  element.geoCoordinates.latitude,
-                  element.geoCoordinates.longitude,
-                ],
-                popup: element.name,
-              });
+        axios.get("http://localhost:8000/stations").then((response) => {
+          setMarkers([]);
+          //for each parent station
+          response.data.stations.forEach((element) => {
+            console.log(element);
+            let freeChargers = 0;
+            let description = element.name + " \n";
+            element.stations.forEach((element) => {
+              if (element.status == "Available") {
+                freeChargers++;
+              }
             });
-            addMarker(newMarkers);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
+            description += "\n \n Free Chargers: " + freeChargers + "\n";
+            addMarker(
+              [
+                element.geoCoordinates.latitude,
+                element.geoCoordinates.longitude,
+              ],
+              description
+            );
           });
+        });
 
         console.log("Northeast corner:", northeastLat, northeastLng); // {lat, lng}
         console.log("Southwest corner:", southwestLat, southwestLng); // {lat, lng}
