@@ -1,8 +1,7 @@
-import axios from "axios";
 import React from "react";
-import Modal from "./modal.jsx";
+import ModalExample from "./modal.jsx";
 
-const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
+const MarkerListComponent = ({ markers, onMarkerClick }) => {
   return (
     <div
       style={{
@@ -12,7 +11,7 @@ const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
         overflowY: "auto",
         background: "#f8f9fa",
       }}>
-      <h3>Marker List</h3>
+      <h3>Markers List</h3>
       <ul style={{ listStyleType: "none", padding: 0 }}>
         {markers.map((marker, index) => (
           <li
@@ -22,13 +21,15 @@ const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
               margin: "0.5rem 0",
               border: "1px solid #ddd",
               borderRadius: "4px",
-              cursor: "pointer",
               background: "#fff",
-            }}
-            onClick={() => onMarkerClick(marker.position)}>
-            {marker.popup}
-
-            <Modal marker={marker} />
+            }}>
+            <div
+              onClick={() => onMarkerClick(marker.position)}
+              style={{ cursor: "pointer", fontWeight: "bold" }}>
+              {marker.popup}
+            </div>
+            {/* Include only the modal button */}
+            <ModalExample marker={marker} />
           </li>
         ))}
       </ul>

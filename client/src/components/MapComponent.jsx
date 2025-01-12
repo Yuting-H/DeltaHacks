@@ -12,8 +12,6 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import axios from "axios";
 
-// Example marker data
-
 // Utility Component to recenter the map
 const RecenterMap = ({ center }) => {
   const map = useMap();
@@ -33,47 +31,26 @@ const MapComponent = ({ markers, setMarkers, center }) => {
     const map = useMapEvents({
       moveend: () => {
         const bounds = map.getBounds(); // Get the current bounds of the map
-        const northeastLat = bounds.getNorthEast().lat; // Northeast corner
-        const northeastLng = bounds.getNorthEast().lng; // Northeast corner
-        const southwestLat = bounds.getSouthWest().lat; // Southwest corner
-        const southwestLng = bounds.getSouthWest().lng; // Southwest corner
-
-        /* Call the Post API to Flo here */
-        const postData = {
-          zoomLevel: 14,
-          bounds: {
-            SouthWest: {
-              Latitude: 43.252862718786815,
-              Longitude: -79.93455302667238,
-            },
-            NorthEast: {
-              Latitude: 43.27036402347989,
-              Longitude: -79.87678897332765,
-            },
-          },
-          filter: {
-            networkIds: [],
-            connectors: null,
-            levels: [],
-            rates: [],
-            statuses: [],
-            minChargingSpeed: null,
-            maxChargingSpeed: null,
-          },
-        };
 
         axios.get("http://localhost:8000/stations").then((response) => {
-          setMarkers([]);
-          //for each parent station
+          setMarkers([]); // Clear existing markers
+          // Process each parent station
           response.data.stations.forEach((element) => {
-            let freeChargers = 0;
-            let description = element.name + " \n";
-            element.stations.forEach((element) => {
-              if (element.status == "Available") {
-                freeChargers++;
+            let availableChargers = 0;
+
+            // Count available chargers
+            element.stations.forEach((station) => {
+              if (station.status === "Available") {
+                availableChargers++;
               }
             });
-            description += "\n \n Free Chargers: " + freeChargers + "\n";
+
+            // Properly structure the description for the popup
+            const description = `
+              ${element.name}
+                Available Chargers: ${availableChargers}
+            `;
+
             addMarker(
               [
                 element.geoCoordinates.latitude,
@@ -84,9 +61,6 @@ const MapComponent = ({ markers, setMarkers, center }) => {
             );
           });
         });
-
-        console.log("Northeast corner:", northeastLat, northeastLng); // {lat, lng}
-        console.log("Southwest corner:", southwestLat, southwestLng); // {lat, lng}
       },
     });
     return null;
@@ -107,10 +81,11 @@ const MapComponent = ({ markers, setMarkers, center }) => {
         <Marker
           key={index}
           position={marker.position}>
-          <Popup>{marker.popup}</Popup>
+          <Popup>
+            <div dangerouslySetInnerHTML={{ __html: marker.popup }} />
+          </Popup>
         </Marker>
       ))}
-
       <LogBounds />
     </MapContainer>
   );
