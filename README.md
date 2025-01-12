@@ -24,7 +24,10 @@ venv\Scripts\activate
 
 Install a web server, I use uvicorn,
 
+for windows:
+
 ```
 pip install uvicorn[standard]
+venv\Scripts\activate
 uvicorn main:app --reload
 ```
