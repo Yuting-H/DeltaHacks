@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
@@ -26,7 +27,15 @@ const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
             onClick={() => onMarkerClick(marker.position)}>
             {marker.popup}
             <button
-              onClick={handleFeedBack}
+              //get request
+              onClick={() => {
+                axios
+                  .get("http://localhost:8000/data/" + marker.id)
+                  .then((response) => {
+                    console.log(response);
+                  });
+                console.log(marker.id);
+              }}
               style={{ display: "block", padding: "4px" }}>
               Add feedback
             </button>

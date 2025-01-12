@@ -25,8 +25,8 @@ const MapComponent = ({ markers, setMarkers, center }) => {
   const mapRef = useRef();
 
   // Function to add a new marker
-  const addMarker = (position, popup) => {
-    setMarkers((prevMarkers) => [...prevMarkers, { position, popup }]);
+  const addMarker = (position, popup, id) => {
+    setMarkers((prevMarkers) => [...prevMarkers, { position, popup, id }]);
   };
 
   const LogBounds = () => {
@@ -80,7 +80,8 @@ const MapComponent = ({ markers, setMarkers, center }) => {
                 element.geoCoordinates.latitude,
                 element.geoCoordinates.longitude,
               ],
-              description
+              description,
+              element.id
             );
           });
         });

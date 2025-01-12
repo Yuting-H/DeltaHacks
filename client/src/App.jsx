@@ -8,9 +8,7 @@ import MapView from "./components/MapView";
 const App = () => {
   // Initial markers
   const initialMarkers = [
-    { position: [43.25, -79.84], popup: "Marker 1" },
-    { position: [43.255, -79.845], popup: "Marker 2" },
-    { position: [43.245, -79.84], popup: "Marker 3" },
+    { position: [43.25, -79.84], popup: "Marker 1", id: "" },
   ];
   const [markers, setMarkers] = useState(initialMarkers);
 
