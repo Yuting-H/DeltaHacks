@@ -10,6 +10,7 @@ import {
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import axios from "axios";
 
 // Example marker data
 
@@ -23,15 +24,68 @@ const RecenterMap = ({ center }) => {
 const MapComponent = ({ markers, center }) => {
   const mapRef = useRef();
 
+  const addMarker = (position) => {
+    setMarkers((prevMarkers) => [
+      ...prevMarkers,
+      { position, popup: `New Marker ${prevMarkers.length + 1}` },
+    ]);
+  };
+
   const LogBounds = () => {
     const map = useMapEvents({
       moveend: () => {
         const bounds = map.getBounds(); // Get the current bounds of the map
-        const northeast = bounds.getNorthEast(); // Northeast corner
-        const southwest = bounds.getSouthWest(); // Southwest corner
+        const northeastLat = bounds.getNorthEast().lat; // Northeast corner
+        const northeastLng = bounds.getNorthEast().lng; // Northeast corner
+        const southwestLat = bounds.getSouthWest().lat; // Southwest corner
+        const southwestLng = bounds.getSouthWest().lng; // Southwest corner
 
-        console.log("Northeast corner:", northeast); // {lat, lng}
-        console.log("Southwest corner:", southwest); // {lat, lng}
+        /* Call the Post API to Flo here */
+        const postData = {
+          zoomLevel: 14,
+          bounds: {
+            SouthWest: {
+              Latitude: 43.252862718786815,
+              Longitude: -79.93455302667238,
+            },
+            NorthEast: {
+              Latitude: 43.27036402347989,
+              Longitude: -79.87678897332765,
+            },
+          },
+          filter: {
+            networkIds: [],
+            connectors: null,
+            levels: [],
+            rates: [],
+            statuses: [],
+            minChargingSpeed: null,
+            maxChargingSpeed: null,
+          },
+        };
+
+        axios
+          .post("https://emobility.flo.ca/v3.0/map/markers/search", postData)
+          .then((response) => {
+            console.log("Response:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        axios
+          .get(
+            "https://emobility.flo.ca/v3.0/parks/station/1e0335b4-b6b4-4db3-b32d-9e5bb90ba582"
+          )
+          .then((response) => {
+            console.log("Response:", response);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        console.log("Northeast corner:", northeastLat, northeastLng); // {lat, lng}
+        console.log("Southwest corner:", southwestLat, southwestLng); // {lat, lng}
       },
     });
     return null;
