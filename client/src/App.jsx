@@ -6,6 +6,14 @@ import MarkerListComponent from "./components/MarkerListComponent";
 import MapView from "./components/MapView";
 
 const App = () => {
+  // Initial markers
+  const initialMarkers = [
+    { position: [43.25, -79.84], popup: "Marker 1" },
+    { position: [43.255, -79.845], popup: "Marker 2" },
+    { position: [43.245, -79.84], popup: "Marker 3" },
+  ];
+  const [markers, setMarkers] = useState(initialMarkers);
+
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   const [markers, setMarkers] = useState([

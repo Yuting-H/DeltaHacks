@@ -375,3 +375,4 @@ venv/
 
 # Ignore environment variables
 .env
+venv/
