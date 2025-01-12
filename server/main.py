@@ -21,14 +21,26 @@ GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
 # MongoDB connection setup
 uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}/?retryWrites=true&w=majority"
-try:
-    client = MongoClient(uri, server_api=ServerApi("1"))
-    db = client["betabase"]
-    stations_collection = db["stations"]
-    logging.info("Connected to MongoDB successfully.")
-except Exception as e:
-    logging.error(f"Failed to connect to MongoDB: {e}")
-    raise e
+# try:
+#     client = MongoClient(uri, server_api=ServerApi("1"))
+#     db = client["betabase"]
+#     stations_collection = db["stations"]
+#     logging.info("Connected to MongoDB successfully.")
+# except Exception as e:
+#     logging.error(f"Failed to connect to MongoDB: {e}")
+#     raise e
+
+def mongo_connect(collection="stations"):
+    # MongoDB connection setup
+    try:
+        client = MongoClient(uri, server_api=ServerApi("1"))
+        db = client["betabase"]  # Access the database
+        stations_collection = db[collection]  # Access the stations collection
+        print("MongoDB connection successful!")
+        return stations_collection
+    except Exception as e:
+        raise Exception(f"Failed to connect to MongoDB: {e}")
+
 
 app = FastAPI()
 
@@ -134,6 +146,7 @@ async def get_chargers_on_route(origin: str, destination: str, max_distance: flo
     """
     Find EV chargers along a route between origin and destination.
     """
+    stations_collection = mongo_connect("uxpropertegypt")
     try:
         logging.info(f"Received request: origin={origin}, destination={destination}, max_distance={max_distance}")
 
@@ -177,6 +190,7 @@ async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 
     """
     Get charging stations within a given radius (default: 5km) of provided coordinates.
     """
+    stations_collection = mongo_connect()
     user_location = (lat, lon)
     stations_within_radius = []
 
@@ -218,6 +232,7 @@ async def get_station_details(station_id: str):
     """
     Get details of a specific charging station by its ID, including nested stations.
     """
+    stations_collection = mongo_connect()
     try:
         # Iterate over all parent stations
         for parent_station in stations_collection.find():
