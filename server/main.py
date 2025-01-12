@@ -11,6 +11,7 @@ from typing import List, Dict, Optional
 from datetime import datetime
 from bson import ObjectId
 from geopy.distance import geodesic
+import requests
 import os
 
 load_dotenv()
@@ -40,6 +41,7 @@ uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}"
 API_URL = "https://emobility.flo.ca/v3.0/map/markers/search"
 uri = "mongodb+srv://deltaback:aoqQZ9PfaKZTCFxA@electricbuddy.0qhs8.mongodb.net/?retryWrites=true&w=majority&appName=electricbuddy"
 
+
 # Pydantic models for request validation
 class StationDetails(BaseModel):
     id: str
@@ -50,12 +52,15 @@ class StationDetails(BaseModel):
     name: str
     chargingSpeed: int
 
+
 class GeoCoordinates(BaseModel):
     latitude: float
     longitude: float
 
+
 class Metadata(BaseModel):
     location: str
+
 
 class Schema(BaseModel):
     name: str
@@ -66,6 +71,7 @@ class Schema(BaseModel):
     metadata: Metadata
     address: str  # New field for address
 
+
 class Station(BaseModel):
     id: str
     connectors: List[str]
@@ -74,6 +80,7 @@ class Station(BaseModel):
     freeOfCharge: bool
     name: str
     chargingSpeed: int
+
 
 class DataModel(BaseModel):
     id: str
@@ -114,16 +121,13 @@ def upsert_schema_in_db(park_data):
     """
     Insert park data if its ID does not exist in the collection.
     If the ID already exists, do nothing.
-    Adds the current timestamp as 'lastUpdated' and ensures the 'address' field is included.
+    Fetch the address using the station ID from the first station in the park's 'stations' list.
+    Adds the current timestamp as 'lastUpdated'.
     """
-    stations_collection = mongo_connect("uxpropertegypt")
+    stations_collection = mongo_connect("baobao")
 
     # Add the current timestamp as 'lastUpdated'
     park_data["lastUpdated"] = int(datetime.utcnow().timestamp() * 1000)  # Use milliseconds for consistency
-
-    # Ensure an empty 'address' field is present
-    if "address" not in park_data:
-        park_data["address"] = ""
 
     # Get the park's ID
     park_id = park_data.get("id")
@@ -139,10 +143,38 @@ def upsert_schema_in_db(park_data):
         print(f"Park with ID: {park_id} already exists. Skipping insert.")
         return  # Do nothing if the park already exists
 
+    # Extract the first station's ID for querying the address
+    stations = park_data.get("stations", [])
+    if not stations:
+        raise ValueError(f"Park data with ID {park_id} must have at least one station")
+
+    # Use the ID of the first station in the list
+    station_id = stations[0]["id"]
+
+    # Fetch the address using the station ID if 'address' is not provided in the data
+    if "address" not in park_data or not park_data["address"]:
+        park_data["address"] = fetch_address_from_api(station_id)
+
     # Perform the insertion if no document with the same ID exists
     stations_collection.insert_one(park_data)
     print(f"Inserted new park with ID: {park_id}")
 
+
+def fetch_address_from_api(station_id):
+    """
+    Fetch the address of a station using its ID from the FLO API.
+    """
+    api_url = f"https://emobility.flo.ca/v3.0/parks/station/{station_id}"
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()  # Raise an error for HTTP codes 4xx/5xx
+        data = response.json()
+
+        # Extract the address from the response
+        return data.get("address", "Unknown address")
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching address for station_id {station_id}: {e}")
+        return "Unknown address"
 
 # Function to process and store parks data
 @app.post("/find_parks")
@@ -343,7 +375,7 @@ def mongo_obj_id(obj):
 # Modify your endpoint to use the custom from_mongo method
 @app.get("/data/{id}", response_model=DataModel)
 async def get_data(id: str):
-    collection = mongo_connect("uxpropertegypt")
+    collection = mongo_connect("baobao")
     data = collection.find_one({"id": id})
     if not data:
         raise HTTPException(status_code=404, detail="Data not found")
@@ -355,7 +387,7 @@ async def get_data(id: str):
 
 @app.put("/data/{id}", response_model=DataModel)
 async def overwrite_data(id: str, data: DataModel):
-    collection = mongo_connect("uxpropertegypt")
+    collection = mongo_connect("baobao")
     # Find the document by its "id"
     existing_data = collection.find_one({"id": id})
 
@@ -372,4 +404,3 @@ async def overwrite_data(id: str, data: DataModel):
         return data  # Return the full updated data
     else:
         raise HTTPException(status_code=400, detail="Failed to overwrite data")
-
