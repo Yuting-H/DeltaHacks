@@ -1,66 +1,73 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import "./MapView.css"; // Custom styles for enhanced UI
 
-const GOOGLE_MAPS_API_KEY = "AIzaSyB_H1Mb4pSSjLX3Brb9FRYZ9IVPAH0pCT0"; // Replace with your actual API key
+const GOOGLE_MAPS_API_KEY = "AIzaSyB_H1Mb4pSSjLX3Brb9FRYZ9IVPAH0pCT0"; // Replace with your API Key
 
 const MapView = () => {
-  const mapRef = useRef(null);
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
-  const [chargers, setChargers] = useState([]);
+  const mapRef = useRef(null);
   const directionsServiceRef = useRef(null);
   const directionsRendererRef = useRef(null);
+  const originAutocompleteRef = useRef(null);
+  const destinationAutocompleteRef = useRef(null);
 
-  const autocompleteRefs = {
-    origin: useRef(null),
-    destination: useRef(null),
-  };
-
-  // Load Google Maps script dynamically
+  // Initialize Google Maps and Directions API
   useEffect(() => {
-    const loadGoogleMapsApi = () => {
+    const initializeGoogleMaps = () => {
+      directionsServiceRef.current = new google.maps.DirectionsService();
+      directionsRendererRef.current = new google.maps.DirectionsRenderer();
+
+      const map = new google.maps.Map(mapRef.current, {
+        center: { lat: 43.2557, lng: -79.8711 }, // Default location
+        zoom: 13,
+        styles: [
+          {
+            featureType: "poi",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#746855" }],
+          },
+          {
+            featureType: "poi.park",
+            elementType: "geometry.fill",
+            stylers: [{ color: "#d6e6c3" }],
+          },
+        ], // Custom map styling
+      });
+
+      directionsRendererRef.current.setMap(map);
+
+      // Set up autocomplete for origin and destination
+      originAutocompleteRef.current = new google.maps.places.Autocomplete(
+        document.getElementById("origin-input")
+      );
+      destinationAutocompleteRef.current = new google.maps.places.Autocomplete(
+        document.getElementById("destination-input")
+      );
+
+      originAutocompleteRef.current.addListener("place_changed", () => {
+        const place = originAutocompleteRef.current.getPlace();
+        setOrigin(place.formatted_address || place.name);
+      });
+
+      destinationAutocompleteRef.current.addListener("place_changed", () => {
+        const place = destinationAutocompleteRef.current.getPlace();
+        setDestination(place.formatted_address || place.name);
+      });
+    };
+
+    if (!window.google) {
       const script = document.createElement("script");
       script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`;
       script.async = true;
       script.defer = true;
-      script.onload = initializeMap;
+      script.onload = initializeGoogleMaps;
       document.body.appendChild(script);
-    };
-
-    loadGoogleMapsApi();
+    } else {
+      initializeGoogleMaps();
+    }
   }, []);
-
-  const initializeMap = () => {
-    const map = new google.maps.Map(mapRef.current, {
-      center: { lat: 43.2557, lng: -79.8711 },
-      zoom: 13,
-    });
-
-    directionsServiceRef.current = new google.maps.DirectionsService();
-    directionsRendererRef.current = new google.maps.DirectionsRenderer();
-    directionsRendererRef.current.setMap(map);
-
-    // Initialize Autocomplete
-    autocompleteRefs.origin.current = new google.maps.places.Autocomplete(
-      document.getElementById("origin-input")
-    );
-    autocompleteRefs.origin.current.addListener("place_changed", () => {
-      const place = autocompleteRefs.origin.current.getPlace();
-      if (place.geometry) {
-        setOrigin(place.formatted_address || place.name);
-      }
-    });
-
-    autocompleteRefs.destination.current = new google.maps.places.Autocomplete(
-      document.getElementById("destination-input")
-    );
-    autocompleteRefs.destination.current.addListener("place_changed", () => {
-      const place = autocompleteRefs.destination.current.getPlace();
-      if (place.geometry) {
-        setDestination(place.formatted_address || place.name);
-      }
-    });
-  };
 
   const handleRouteCalculation = async () => {
     if (!origin || !destination) {
@@ -91,32 +98,45 @@ const MapView = () => {
 
       directionsRendererRef.current.setDirections(directionsResponse);
 
-      const routePolyline = directionsResponse.routes[0].overview_polyline;
+      const response = await axios.get("http://127.0.0.1:8000/chargers-on-route", {
+        params: {
+          origin: `${originCoords.lat},${originCoords.lng}`,
+          destination: `${destinationCoords.lat},${destinationCoords.lng}`,
+          max_distance: 0.5, // Adjust as needed
+        },
+      });
 
-      // Fetch chargers along the route
-      const response = await axios.get(
-        "http://127.0.0.1:8000/chargers-on-route",
-        {
-          params: {
-            origin: `${originCoords.lat},${originCoords.lng}`,
-            destination: `${destinationCoords.lat},${destinationCoords.lng}`,
-            max_distance: 0.5,
-          },
-        }
-      );
-
-      setChargers(response.data.chargers);
-
-      // Add chargers to the map
       const map = directionsRendererRef.current.getMap();
       response.data.chargers.forEach((charger) => {
-        new google.maps.Marker({
+        const marker = new google.maps.Marker({
           position: {
             lat: charger.geoCoordinates.latitude,
             lng: charger.geoCoordinates.longitude,
           },
           map: map,
           title: charger.name,
+          icon: {
+            url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
+          },
+        });
+
+        // Create an info window for each marker
+        const infoWindow = new google.maps.InfoWindow({
+          content: `
+            <div style="font-family: Arial, sans-serif; font-size: 14px;">
+              <h3 style="margin: 0;">${charger.name}</h3>
+              <p><strong>Total Chargers:</strong> ${charger.totalChargers || "Unknown"}</p>
+              <p><strong>Available Chargers:</strong> ${charger.availableChargers || "Unknown"}</p>
+              <p><strong>Average Charging Speed:</strong> ${
+                charger.averageChargingSpeed ? `${charger.averageChargingSpeed} kW` : "Unknown"
+              }</p>
+            </div>
+          `,
+        });
+
+        // Add click event to open the info window
+        marker.addListener("click", () => {
+          infoWindow.open(map, marker);
         });
       });
     } catch (error) {
@@ -126,46 +146,31 @@ const MapView = () => {
   };
 
   return (
-    <div style={{ padding: "20px", paddding: "0", margin: "0" }}>
-      <h1>Google Maps API Route and Chargers</h1>
-      <div
-        style={{
-          marginBottom: "20px",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-end",
-          gap: "20px",
-        }}>
-        <div>
-          <input
-            type="text"
-            id="origin-input"
-            placeholder="Enter origin address"
-            style={{ width: "300px", padding: "10px" }}
-          />
-        </div>
-        <div style={{ marginTop: "10px" }}>
-          <input
-            type="text"
-            id="destination-input"
-            placeholder="Enter destination address"
-            style={{ width: "300px", padding: "10px" }}
-          />
-        </div>
-        <button
-          onClick={handleRouteCalculation}
-          style={{ marginTop: "20px", padding: "10px 20px" }}>
+    <div className="map-view-container">
+      <h1 className="title">Google Maps API Route and Chargers</h1>
+      <div className="input-container">
+        <input
+          id="origin-input"
+          type="text"
+          value={origin}
+          onChange={(e) => setOrigin(e.target.value)}
+          placeholder="Enter origin"
+          className="input-box"
+        />
+        <input
+          id="destination-input"
+          type="text"
+          value={destination}
+          onChange={(e) => setDestination(e.target.value)}
+          placeholder="Enter destination"
+          className="input-box"
+        />
+        <button onClick={handleRouteCalculation} className="calculate-button">
           Calculate Route
         </button>
       </div>
-      <div
-        ref={mapRef}
-        style={{
-          height: "500px",
-          width: "100%",
-          border: "1px solid #ccc",
-          marginTop: "20px",
-        }}></div>
+
+      <div ref={mapRef} className="map-container"></div>
     </div>
   );
 };
