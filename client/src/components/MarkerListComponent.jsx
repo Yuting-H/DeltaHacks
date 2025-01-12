@@ -1,10 +1,11 @@
 import React from "react";
 
-const MarkerListComponent = ({ markers, onMarkerClick }) => {
+const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
   return (
     <div
       style={{
         width: "30%",
+        height: "100vh",
         padding: "1rem",
         overflowY: "auto",
         background: "#f8f9fa",
@@ -24,6 +25,11 @@ const MarkerListComponent = ({ markers, onMarkerClick }) => {
             }}
             onClick={() => onMarkerClick(marker.position)}>
             {marker.popup}
+            <button
+              onClick={handleFeedBack}
+              style={{ display: "block", padding: "4px" }}>
+              Add feedback
+            </button>
           </li>
         ))}
       </ul>

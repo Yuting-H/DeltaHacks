@@ -94,13 +94,16 @@ const MapView = () => {
       const routePolyline = directionsResponse.routes[0].overview_polyline;
 
       // Fetch chargers along the route
-      const response = await axios.get("http://127.0.0.1:8000/chargers-on-route", {
-        params: {
-          origin: `${originCoords.lat},${originCoords.lng}`,
-          destination: `${destinationCoords.lat},${destinationCoords.lng}`,
-          max_distance: 0.5,
-        },
-      });
+      const response = await axios.get(
+        "http://127.0.0.1:8000/chargers-on-route",
+        {
+          params: {
+            origin: `${originCoords.lat},${originCoords.lng}`,
+            destination: `${destinationCoords.lat},${destinationCoords.lng}`,
+            max_distance: 0.5,
+          },
+        }
+      );
 
       setChargers(response.data.chargers);
 
@@ -123,31 +126,35 @@ const MapView = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", paddding: "0", margin: "0" }}>
       <h1>Google Maps API Route and Chargers</h1>
-      <div style={{ marginBottom: "20px" }}>
+      <div
+        style={{
+          marginBottom: "20px",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "flex-end",
+          gap: "20px",
+        }}>
         <div>
-          <label>Origin: </label>
           <input
             type="text"
             id="origin-input"
             placeholder="Enter origin address"
-            style={{ marginRight: "10px", width: "300px" }}
+            style={{ width: "300px", padding: "10px" }}
           />
         </div>
         <div style={{ marginTop: "10px" }}>
-          <label>Destination: </label>
           <input
             type="text"
             id="destination-input"
             placeholder="Enter destination address"
-            style={{ width: "300px" }}
+            style={{ width: "300px", padding: "10px" }}
           />
         </div>
         <button
           onClick={handleRouteCalculation}
-          style={{ marginTop: "20px", padding: "10px 20px" }}
-        >
+          style={{ marginTop: "20px", padding: "10px 20px" }}>
           Calculate Route
         </button>
       </div>
@@ -158,8 +165,7 @@ const MapView = () => {
           width: "100%",
           border: "1px solid #ccc",
           marginTop: "20px",
-        }}
-      ></div>
+        }}></div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ import re
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Load environment variables
-load_dotenv(dotenv_path="C:\\Users\\mckayz\\Documents\\DeltaHacks\\server\\.env")
+load_dotenv()
 
 MONGO_DB_USER = os.getenv("MONGO_DB_USER")
 MONGO_DB_PASSWORD = os.getenv("MONGO_DB_PASSWORD")
@@ -134,7 +134,7 @@ async def get_chargers_on_route(origin: str, destination: str, max_distance: flo
 
 # 6. Get Stations Within Radius
 @app.get("/stations")
-async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 0.5):
+async def get_stations_within_radius(lat: float = 43.252862718786815, lon: float = -79.93455302667238, radius_km: float = 20):
     """
     Get charging stations within a given radius (default: 5km) of provided coordinates.
     """

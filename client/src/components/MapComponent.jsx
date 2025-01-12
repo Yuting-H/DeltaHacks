@@ -21,8 +21,13 @@ const RecenterMap = ({ center }) => {
   return null;
 };
 
-const MapComponent = ({ markers, center }) => {
+const MapComponent = ({ markers, setMarkers, center }) => {
   const mapRef = useRef();
+
+  // Function to add a new marker
+  const addMarker = (position, popup) => {
+    setMarkers((prevMarkers) => [...prevMarkers, { position, popup }]);
+  };
 
   const LogBounds = () => {
     const map = useMapEvents({
@@ -57,14 +62,28 @@ const MapComponent = ({ markers, center }) => {
           },
         };
 
-        axios
-          .post("https://emobility.flo.ca/v3.0/map/markers/search", postData)
-          .then((response) => {
-            console.log("Response:", response.data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
+        axios.get("http://localhost:8000/stations").then((response) => {
+          setMarkers([]);
+          //for each parent station
+          response.data.stations.forEach((element) => {
+            console.log(element);
+            let freeChargers = 0;
+            let description = element.name + " \n";
+            element.stations.forEach((element) => {
+              if (element.status == "Available") {
+                freeChargers++;
+              }
+            });
+            description += "\n \n Free Chargers: " + freeChargers + "\n";
+            addMarker(
+              [
+                element.geoCoordinates.latitude,
+                element.geoCoordinates.longitude,
+              ],
+              description
+            );
           });
+        });
 
         console.log("Northeast corner:", northeastLat, northeastLng); // {lat, lng}
         console.log("Southwest corner:", southwestLat, southwestLng); // {lat, lng}
