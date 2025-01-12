@@ -1,5 +1,5 @@
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import httpx
 import json
 from pymongo import MongoClient
@@ -42,40 +42,30 @@ API_URL = "https://emobility.flo.ca/v3.0/map/markers/search"
 uri = "mongodb+srv://deltaback:aoqQZ9PfaKZTCFxA@electricbuddy.0qhs8.mongodb.net/?retryWrites=true&w=majority&appName=electricbuddy"
 
 # Pydantic models for request validation
-class TariffDescription(BaseModel):
-    fr: str
-    en: str
-
-
-class Tariff(BaseModel):
-    id: str
-    description: TariffDescription
-
-
-class Connector(BaseModel):
-    type: str
-    powerType: str
-    power: int
-
-
 class StationDetails(BaseModel):
+    id: str
+    connectors: List[str]
     status: str
     level: str
-    lastCheckIn: str
-    id: str
-    connectors: List[Connector]
-    tariff: Tariff
+    freeOfCharge: bool
+    name: str
+    chargingSpeed: int
 
+class GeoCoordinates(BaseModel):
+    latitude: float
+    longitude: float
 
-# Each station in the list is a dictionary with a single key-value pair
-class Station(RootModel[Dict[str, StationDetails]]):
-    pass
-
+class Metadata(BaseModel):
+    location: str
 
 class Schema(BaseModel):
-    pewpew_id: str
-    address: str
-    stations: List[Station]
+    name: str
+    stations: List[StationDetails]
+    geoCoordinates: GeoCoordinates
+    id: str
+    networkId: int
+    metadata: Metadata
+    address: str  # New field for address
 
 
 def mongo_connect(collection="stations"):
@@ -279,36 +269,36 @@ async def get_station_details(station_id: str):
     raise HTTPException(status_code=404, detail="Charging station not found.")
 
 
-# FastAPI endpoint using the independent function
-@app.post("/update-schema/")
+# Independent function for upserting the data into MongoDB
+def upsert_schema_in_db(schema: Schema):
+    """
+    Insert or update a schema document in MongoDB.
+
+    :param schema: The schema to be inserted or updated.
+    :return: A message indicating the result of the operation.
+    """
+    collection = mongo_connect("uxpropertegypt")
+    schema_dict = schema.dict(by_alias=True)
+
+    # Perform upsert: insert if it doesn't exist, otherwise update
+    result = collection.update_one(
+        {"id": schema.id},  # Search by `id`
+        {"$set": schema_dict},  # Set new values, replace existing ones
+        upsert=True  # Create the document if it doesn't exist
+    )
+
+    if result.matched_count > 0:
+        return "Document updated successfully."
+    elif result.upserted_id:
+        return "Document created successfully."
+    else:
+        return "No changes were made."
+
+# FastAPI endpoint to insert or update the schema
+@app.post("/upsert-schema/")
 async def upsert_schema_endpoint(schema: Schema):
     try:
         result_message = upsert_schema_in_db(schema)
         return {"message": result_message}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-# Independent function for upserting a schema
-def upsert_schema_in_db(schema: Schema):
-    """
-    Create or update a document in MongoDB.
-
-    :param schema: The schema to be upserted.
-    :return: A message indicating whether the document was created or updated.
-    """
-    collection = mongo_connect("uxpropertegypt")
-    schema_dict = schema.dict(by_alias=True)
-    existing_document = collection.find_one({"pewpew_id": schema.pewpew_id})
-
-    if existing_document:
-        # Update the existing document
-        collection.update_one(
-            {"pewpew_id": schema.pewpew_id},
-            {"$set": schema_dict}
-        )
-        return "Document updated successfully."
-    else:
-        # Insert a new document
-        collection.insert_one(schema_dict)
-        return "Document created successfully."
