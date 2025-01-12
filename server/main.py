@@ -1,3 +1,4 @@
+
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 import httpx
@@ -8,13 +9,18 @@ from datetime import datetime
 from calculus import get_bounds_zoom_level
 from dotenv import load_dotenv
 import os
-
+from geopy.distance import geodesic
+import os
 load_dotenv()
 
 MONGO_DB_USER = os.getenv("MONGO_DB_USER")
 MONGO_DB_PASSWORD = os.getenv("MONGO_DB_PASSWORD")
 MONGO_DB_URI = os.getenv("MONGO_DB_URI")
 
+# Debugging: Print environment variables to verify they are loaded
+print(f"MONGO_DB_USER: {MONGO_DB_USER}")
+print(f"MONGO_DB_PASSWORD: {MONGO_DB_PASSWORD}")
+print(f"MONGO_DB_URI: {MONGO_DB_URI}")
 
 app = FastAPI()
 app.add_middleware(
@@ -128,10 +134,19 @@ async def find_parks(input_data: dict):
         print(park)
 
 
-json_file_path = os.path.join(os.path.dirname(__file__), "unique_parks.json")
-with open(json_file_path, "r") as file:
-    charging_data = json.load(file)
+# Construct MongoDB URI
+uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}/?retryWrites=true&w=majority"
 
+# MongoDB connection setup
+try:
+    client = MongoClient(uri, server_api=ServerApi("1"))
+    db = client["betabase"]  # Access the database
+    stations_collection = db["stations"]  # Access the stations collection
+    print("MongoDB connection successful!")
+except Exception as e:
+    raise Exception(f"Failed to connect to MongoDB: {e}")
+
+app = FastAPI()
 
 @app.get("/")
 async def root():
@@ -155,30 +170,37 @@ async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 
     user_location = (lat, lon)
     stations_within_radius = []
 
-    for park in charging_data:
-        park_location = (
-            park["geoCoordinates"]["latitude"],
-            park["geoCoordinates"]["longitude"],
+    # Retrieve all stations from the database
+    try:
+        stations = stations_collection.find()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error querying database: {e}")
+
+    for station in stations:
+        station_location = (
+            station["geoCoordinates"]["latitude"],
+            station["geoCoordinates"]["longitude"],
         )
-        distance = geodesic(user_location, park_location).km
+        distance = geodesic(user_location, station_location).km
+        print(f"Station ID: {station['id']}, Distance: {distance:.2f} km")  # Debugging line
         if distance <= radius_km:
-            park_info = {
-                "id": park["id"],
-                "name": park["name"],
-                "geoCoordinates": park["geoCoordinates"],
+            station_info = {
+                "id": station["id"],
+                "name": station["name"],
+                "geoCoordinates": station["geoCoordinates"],
                 "distance_km": round(distance, 2),
                 "stations": [
                     {
-                        "id": station["id"],
-                        "name": station["name"],
-                        "status": station["status"],
-                        "level": station["level"],
-                        "freeOfCharge": station["freeOfCharge"],
+                        "id": substation["id"],
+                        "name": substation["name"],
+                        "status": substation["status"],
+                        "level": substation["level"],
+                        "freeOfCharge": substation["freeOfCharge"],
                     }
-                    for station in park["stations"]
+                    for substation in station["stations"]
                 ],
             }
-            stations_within_radius.append(park_info)
+            stations_within_radius.append(station_info)
 
     if not stations_within_radius:
         raise HTTPException(
@@ -192,25 +214,23 @@ async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 
 @app.get("/station/{station_id}")
 async def get_station_details(station_id: str):
     """
-    Get details of a specific charging station by its ID.
+    Get details of a specific charging station by its ID, including nested stations.
     """
-    for park in charging_data:
-        for station in park["stations"]:
-            if station["id"] == station_id:
-                station_details = {
-                    "park_id": park["id"],
-                    "park_name": park["name"],
-                    "geoCoordinates": park["geoCoordinates"],
-                    "station": {
-                        "id": station["id"],
-                        "name": station["name"],
-                        "status": station["status"],
-                        "level": station["level"],
-                        "freeOfCharge": station["freeOfCharge"],
-                        "connectors": station["connectors"],
-                        "chargingSpeed": station["chargingSpeed"],
-                    },
-                }
-                return {"station_details": station_details}
+    try:
+        # Iterate over all parent stations
+        for parent_station in stations_collection.find():
+            # Check each substation in the "stations" array
+            for substation in parent_station.get("stations", []):
+                if substation["id"] == station_id:
+                    # Return the matching substation with its parent details
+                    return {
+                        "parent_id": parent_station["id"],
+                        "parent_name": parent_station["name"],
+                        "geoCoordinates": parent_station["geoCoordinates"],
+                        "station": substation,
+                    }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error querying database: {e}")
 
+    # If no match is found
     raise HTTPException(status_code=404, detail="Charging station not found.")
