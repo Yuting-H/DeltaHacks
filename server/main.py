@@ -370,29 +370,46 @@ def is_near_route(charger_coords, route_coords, max_distance=0.5):
 # 5. Chargers Along Route Endpoint
 @app.get("/chargers-on-route")
 async def get_chargers_on_route(origin: str, destination: str, max_distance: float = 0.5):
-    stations_collection = mongo_connect("baobao")
+    stations_collection = mongo_connect("uxpropertegypt")
     try:
         origin_coords = validate_address(origin)
         destination_coords = validate_address(destination)
         route_coords = get_route_googlemaps(origin, destination)
         chargers = list(stations_collection.find())
         chargers_near_route = []
+
         for charger in chargers:
             if "geoCoordinates" not in charger or not isinstance(charger["geoCoordinates"], dict):
                 continue
             if is_near_route(charger["geoCoordinates"], route_coords, max_distance):
+                # Summarize the data for this parent station
+                total_chargers = len(charger.get("stations", []))
+                available_chargers = sum(
+                    1 for station in charger.get("stations", []) if station.get("status") == "Available"
+                )
+                average_speed = (
+                    sum(station.get("chargingSpeed", 0) for station in charger.get("stations", [])) / total_chargers
+                    if total_chargers > 0
+                    else 0
+                )
                 chargers_near_route.append({
                     "id": charger["id"],
                     "name": charger["name"],
-                    "geoCoordinates": charger["geoCoordinates"]
+                    "geoCoordinates": charger["geoCoordinates"],
+                    "totalChargers": total_chargers,
+                    "availableChargers": available_chargers,
+                    "averageChargingSpeed": round(average_speed, 2) if total_chargers > 0 else "Unknown"
                 })
+
         if not chargers_near_route:
             raise HTTPException(status_code=404, detail="No chargers found along the route.")
+
         return {
             "route": route_coords,
             "chargers": chargers_near_route
         }
-    except Exception as e:
+
+except Exception as e:
         logging.error(f"Error in /chargers-on-route: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
