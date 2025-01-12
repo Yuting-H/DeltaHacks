@@ -1,0 +1,4783 @@
+[
+    {
+        "id": "04bcfcab-af5f-0028-3408-578718d8ece8",
+        "name": "PARKING LOTS LOT8-523 LOCUST",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.326851,
+            "longitude": -79.801165
+        },
+        "stations": [
+            {
+                "id": "b60d911c-f84b-48c3-a872-8ff5db03c9d3",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT8-523 LOCUST-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "523f0c9b-0b20-4ad4-95a3-e59a779a45de",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT8-523 LOCUST-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "9608006d-b60a-d1e7-80c8-ae82a54cfaff",
+        "name": "OAKVILLE EV GACC2101",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.436363,
+            "longitude": -79.73927
+        },
+        "stations": [
+            {
+                "id": "ab4f194c-1bfa-44b6-b3e0-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "GACC2101-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "278c5cc0-1a4f-4191-b3e1-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "GACC2101-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "0e2f1c35-75bf-4846-9143-64a0b006c28a",
+        "name": "Redeemer University - Lot A",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.2102503648897,
+            "longitude": -79.9486214010458
+        },
+        "stations": [
+            {
+                "id": "ea000ff2-0e67-4936-8990-1077da2045b6",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-19893",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "ffe9e584-5891-4e36-ab00-ae80b9e44353",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-19902",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "15031da3-9b52-2743-5074-59eda8b4caeb",
+        "name": "ALECTRA HORIZON 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.186703,
+            "longitude": -79.841444
+        },
+        "stations": [
+            {
+                "id": "a0f1daa1-1639-44bf-b572-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "1 - HORIZON 1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "4af7e48f-32d5-4527-b573-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "2 - HORIZON 1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "7998f649-04f0-1f86-b2e6-150b51dd0600",
+        "name": "MOHAWK RESIDENCE # 3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.239837,
+            "longitude": -79.889304
+        },
+        "stations": [
+            {
+                "id": "bedc5aca-0cfb-4fc8-bd15-57c37491aa8a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 3-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "7fa64d4b-098b-4ae5-ac23-b2b1eaa79968",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 3-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "e46a38cf-8b92-a63f-6054-a1768ecdc4e1",
+        "name": "PARKING LOTS LOT7-500 LOCUST",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.326245,
+            "longitude": -79.800611
+        },
+        "stations": [
+            {
+                "id": "18d38bb2-d342-4a85-21c8-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT7-500 LOCUST-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "eaed27b1-040d-4dc7-21c9-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT7-500 LOCUST-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "b3514adf-75d5-9cc0-e492-ceda0eaa4b00",
+        "name": "BHEI CT4K-GW1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.35409,
+            "longitude": -79.795836
+        },
+        "stations": [
+            {
+                "id": "4ca6ca07-653c-4aa3-b21b-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CT4K-GW1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "2c23f2ed-2acd-4776-b21c-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CT4K-GW1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "2c443b84-b5af-3f5a-30b8-4872167f2a24",
+        "name": "ECCC CCIW-01",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.299811,
+            "longitude": -79.801561
+        },
+        "stations": [
+            {
+                "id": "9c75bb44-8721-4ae9-b141-396e94b1b0c7",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "CCIW-01-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "0a4e025d-bbcb-4e6b-b20d-64874c466ae2",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "CCIW-01-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "2fa80095-32ee-bd9f-4681-9fa106fe17e2",
+        "name": "TANSLEY WOODS TANSLEY WOODS 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.382221,
+            "longitude": -79.800312
+        },
+        "stations": [
+            {
+                "id": "e72cb021-2747-4988-c893-08dbaf123ea5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "TANSLEY WOODS 1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "4af0b535-1659-463e-c894-08dbaf123ea5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "TANSLEY WOODS 1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "5442afff-fecb-27b7-8714-a597fe05e749",
+        "name": "IKEA 040 BURLINGTON CX4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.32757,
+            "longitude": -79.828649
+        },
+        "stations": [
+            {
+                "id": "311545c3-77b2-4901-2144-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX4-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "4f6db02f-668d-4d6e-2145-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX4-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "35e3683f-3bb9-7fd3-e03d-31716d5a6d87",
+        "name": "ALDERSHOT ARENA ALDERSHOTARENA1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.316784,
+            "longitude": -79.833133
+        },
+        "stations": [
+            {
+                "id": "3d1c2824-1416-48b0-b34b-6efd3256cf79",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "ALDERSHOTARENA1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "3d064aa9-7426-4114-ae3f-dfbf1e97db0f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "ALDERSHOTARENA1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "b234c615-1fd5-3dfe-141f-1b965bbbad73",
+        "name": "BUDDS BMW STATION 01",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.411776,
+            "longitude": -79.737234
+        },
+        "stations": [
+            {
+                "id": "c0c872a4-7b2b-46c4-2577-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "1 - STATION 01",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "925ec7fb-b2b0-4abd-2578-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "2 - STATION 01",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "c7f7d6fc-2652-59e6-583e-6535a49664da",
+        "name": "PARKING GARAGE LEVEL 6A - 4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.324002,
+            "longitude": -79.798105
+        },
+        "stations": [
+            {
+                "id": "b6dcf48b-d2d5-422f-b390-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 4-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "e1ec69f4-c549-40b6-b391-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 4-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "356245c8-b81d-e52f-ec24-ef88166b06b3",
+        "name": "HHEALTHCARE OTMH STATION 4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.450572,
+            "longitude": -79.765937
+        },
+        "stations": [
+            {
+                "id": "96b129b2-b90c-422f-a2c4-0f97c50f0ba1",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 4-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "a89cdf8f-2c13-4514-8d6d-c533b4ab3307",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 4-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "7ee36999-7649-dda2-1fdd-4ed4becac8fb",
+        "name": "HOPA PORTS 210 HILLYARD S2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.27137,
+            "longitude": -79.83774
+        },
+        "stations": [
+            {
+                "id": "53d19885-74c6-45b7-f767-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "210 HILLYARD S2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "9bb71fa0-600a-440e-f768-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "210 HILLYARD S2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "02b8ba91-9ded-37b3-93f4-e8766686d88e",
+        "name": "CHARGE STATION STATION 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.33831,
+            "longitude": -79.81669
+        },
+        "stations": [
+            {
+                "id": "e254678f-c2d2-4c07-2508-08db897648da",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "STATION 2-1",
+                "chargingSpeed": 62
+            }
+        ]
+    },
+    {
+        "id": "3f6bf64f-4f71-e642-1c3f-cba3a9b73abe",
+        "name": "HHEALTHCARE OTMH STATION 3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.450539,
+            "longitude": -79.765854
+        },
+        "stations": [
+            {
+                "id": "f1ade7ee-7ffe-4c2b-a3b0-8c13889911a3",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 3-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "d754ec8e-b404-4acd-90ad-ae4199565217",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 3-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "f8eb98ff-3738-736b-8436-90e66d17cffb",
+        "name": "HAMILTON PUBLIC STATION 5",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.256473,
+            "longitude": -79.872653
+        },
+        "stations": [
+            {
+                "id": "d785af8f-dbe5-4df1-a34f-380db2a6ec95",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "STATION 5-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "9ef78026-3d55-46aa-a82a-cae0fd726540",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "STATION 5-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "d5f9e57e-e600-04dd-2834-8769820a2098",
+        "name": "HHEALTHCARE OTMH STATION 7",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.450695,
+            "longitude": -79.76612
+        },
+        "stations": [
+            {
+                "id": "a6d8b2a1-f6e1-4079-b2c0-242518e17dea",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 7-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "a17d065f-87a4-4627-bb3f-295886b9fa4d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 7-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ad4242af-52f1-5d67-e762-cbfa7a5888c6",
+        "name": "HOPA PORTS 450 SHERMAN FC",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.267419,
+            "longitude": -79.831127
+        },
+        "stations": [
+            {
+                "id": "1b4acc3f-804c-404b-9262-828decc5a276",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "450 SHERMAN FC-2",
+                "chargingSpeed": 12
+            },
+            {
+                "id": "d1dd6fba-cc3f-463b-8797-9c59a331fa44",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "450 SHERMAN FC-1",
+                "chargingSpeed": 12
+            }
+        ]
+    },
+    {
+        "id": "04a2ca7b-17df-5e45-7379-5ed6b71a947b",
+        "name": "PARKING LOTS LOT6-430 BROCK",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.320759,
+            "longitude": -79.802156
+        },
+        "stations": [
+            {
+                "id": "b746ac65-d0cb-460c-8e37-032d8fa870a7",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT6-430 BROCK-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "e13cc636-c477-474b-b22d-b80c107b7d7e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT6-430 BROCK-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "e4d1ef7f-ced7-842e-ff23-fd318f4264e1",
+        "name": "HHEALTHCARE OTMH STATION 6",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.450671,
+            "longitude": -79.766076
+        },
+        "stations": [
+            {
+                "id": "39691917-409e-451c-aabc-1ed2e1d2b372",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 6-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "292a6cb9-13fa-426d-9308-64696402b575",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 6-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "bb44d698-9512-4e68-a31e-b47da8af0f3a",
+        "name": "John Bear Buick Chevrolet GMC Cadillac Ltd",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.215863,
+            "longitude": -79.888042
+        },
+        "stations": [
+            {
+                "id": "5ade3b85-14f7-44f9-b274-1aa8864fdb02",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-01349",
+                "chargingSpeed": 16
+            },
+            {
+                "id": "b46b4ff8-b212-4d0d-914d-23d68fbc98ed",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-01365",
+                "chargingSpeed": 16
+            },
+            {
+                "id": "d53235e8-41a6-4690-a7be-ae6fc512ed95",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-01357",
+                "chargingSpeed": 16
+            }
+        ]
+    },
+    {
+        "id": "1c591988-3d75-6350-cd49-3ed3c1665ab4",
+        "name": "CENTRAL ARENA CENTRAL ARENA 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.335607,
+            "longitude": -79.792308
+        },
+        "stations": [
+            {
+                "id": "309993d7-4093-4a39-b39e-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "CENTRAL ARENA 2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "afc05f0b-246e-4e5c-b39f-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "CENTRAL ARENA 2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "8b42d4c0-d6c2-fd0b-475d-3acc99eba32a",
+        "name": "PNUC PNUC 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.339046,
+            "longitude": -79.77746
+        },
+        "stations": [
+            {
+                "id": "8c4cdd59-7fcc-4e85-b302-853dcfe79ed8",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "PNUC 1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "53f9c21f-c3af-4f0a-b565-eaa70c72a58b",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "PNUC 1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "7f1bba64-76c4-8c5f-bacc-db1e311e781c",
+        "name": "7 INNOVATION HTC 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.310067,
+            "longitude": -79.917758
+        },
+        "stations": [
+            {
+                "id": "ae9e9726-76f0-412e-b636-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "HTC 2-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "84f709a8-a86d-4e35-ef6c-da70fc20a13e",
+        "name": "HOPA PORTS 605 STATION 3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.273243,
+            "longitude": -79.8625
+        },
+        "stations": [
+            {
+                "id": "2eb33057-1e9e-4444-b735-9b93a62fc07d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 3-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "3c5842dc-b510-409a-a909-f337d8a17ef7",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 3-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "bec8b9d7-abd7-408e-88a4-fbf2161a99ec",
+        "name": "McMaster University - Lot B",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.263276,
+            "longitude": -79.9166
+        },
+        "stations": [
+            {
+                "id": "aeb8f14b-0537-41a5-bf4c-1ab8fe6cd910",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAA-10471",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "f8561c91-ff77-41da-8619-9a8525c1a207",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAA-10256",
+                "chargingSpeed": 7
+            }
+        ]
+    },
+    {
+        "id": "a117a694-ef12-0970-70c8-e4c3b3930e55",
+        "name": "IKEA 040 BURLINGTON CX2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.327541,
+            "longitude": -79.828583
+        },
+        "stations": [
+            {
+                "id": "3ee8a282-47dd-4d50-8a11-5331909eff73",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX2-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "14d16f42-0091-45b0-84da-7a6eb7aedcf4",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX2-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "4f0d595f-d8c0-8425-1cea-b9ac8b54a74c",
+        "name": "ECCC FRONT LOT 1-2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.298951,
+            "longitude": -79.800121
+        },
+        "stations": [
+            {
+                "id": "048d6777-3271-4a3e-f7f9-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "FRONT LOT 1-2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "7e88cb04-a429-4399-f7fa-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "FRONT LOT 1-2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "d710987b-186e-dd6a-5b4c-d9b407d64bf2",
+        "name": "IKEA 040 BURLINGTON CX1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.327586,
+            "longitude": -79.82866
+        },
+        "stations": [
+            {
+                "id": "2d8f2c3f-95d3-485b-b310-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "c041c189-930f-49fb-b311-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "f7d82c96-7f82-98dc-e612-975655ff0372",
+        "name": "ALDERSHOT ARENA ALDERSHOTARENA2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.316749,
+            "longitude": -79.833157
+        },
+        "stations": [
+            {
+                "id": "30822312-6ebe-4642-b39a-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "ALDERSHOTARENA2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "3e285872-5104-4b51-b39b-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "ALDERSHOTARENA2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "cd3c7e9c-c1b5-ac91-fb52-6233b7497e6c",
+        "name": "HAMILTON PUBLIC 23 HATT ST",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.26511,
+            "longitude": -79.95538
+        },
+        "stations": [
+            {
+                "id": "cf1a3846-e1e6-4788-aed4-d1ec21fa067e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "23 HATT ST-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "1fdb9f15-22d4-48ac-8651-dd075a95707e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "23 HATT ST-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "7bb82def-49ca-b108-d04e-0a145fb6b4ac",
+        "name": "JBH P1-1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.3154,
+            "longitude": -79.802678
+        },
+        "stations": [
+            {
+                "id": "1ee293c3-c016-4e8d-b804-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "P1-1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "94e6076d-8c77-4fc1-b805-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "P1-1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "a299d38f-11f2-152b-f289-682cee1849b1",
+        "name": "C22005 - Oakville EV",
+        "networkId": 9,
+        "geoCoordinates": {
+            "latitude": 43.384997,
+            "longitude": -79.735231
+        },
+        "stations": [
+            {
+                "id": "9c343a19-b646-4aa2-cbbf-08dbaf123ea5",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "33521",
+                "chargingSpeed": 50
+            },
+            {
+                "id": "4d7326c8-42e5-4554-cbc6-08dbaf123ea5",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "33518",
+                "chargingSpeed": 50
+            },
+            {
+                "id": "ae6bb889-d898-4151-cbc7-08dbaf123ea5",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "InUse",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "33519",
+                "chargingSpeed": 50
+            }
+        ]
+    },
+    {
+        "id": "bc57239f-d21e-4db0-899d-eba7d523a6b9",
+        "name": "FLO - Canadian Tire - Burlington",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.396617,
+            "longitude": -79.795893
+        },
+        "stations": [
+            {
+                "id": "5a713091-fbc2-42c7-a428-0d3a7a8636c5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAA-10689",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "e0cd9eb1-7a29-4a1a-bb5d-49529f924a53",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAC-00119",
+                "chargingSpeed": 50
+            },
+            {
+                "id": "3db46082-cc6c-4d86-80e9-93a5d70191d2",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAC-00118",
+                "chargingSpeed": 50
+            },
+            {
+                "id": "6dc54246-4dc8-45cc-938f-e638152999ee",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAA-10697",
+                "chargingSpeed": 7
+            }
+        ]
+    },
+    {
+        "id": "ca87e075-1343-e114-b2de-27c288d2c63f",
+        "name": "PARKING LOTS LOT2-466 BURL",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.323128,
+            "longitude": -79.800468
+        },
+        "stations": [
+            {
+                "id": "90912102-1d8e-4bd4-f5e2-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT2-466 BURL-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "f02b9ef3-9f33-4277-f5e3-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT2-466 BURL-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "737e2427-5d40-b517-a47e-9f5817bfbadf",
+        "name": "APPLEBY ARENA APPLEBY ARENA 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.386087,
+            "longitude": -79.776842
+        },
+        "stations": [
+            {
+                "id": "a9df7e77-de05-47da-9d49-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "APPLEBY ARENA 2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "9f0be488-69a4-4a48-9d4a-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "APPLEBY ARENA 2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "58627693-1089-419d-9b6f-3bb35fc44739",
+        "name": "Burlington Nissan - Fast Charger",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.37001079,
+            "longitude": -79.78549051
+        },
+        "stations": [
+            {
+                "id": "343dffd2-b3c8-4537-a4ca-bcea761194bf",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "InUse",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAK-01036",
+                "chargingSpeed": 100
+            }
+        ]
+    },
+    {
+        "id": "e9d07056-cdc4-844c-fdf2-01dfe7f5264a",
+        "name": "HOPA PORTS 1632 BURLNGTN 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.255477,
+            "longitude": -79.796364
+        },
+        "stations": [
+            {
+                "id": "885aadc2-d0c9-4455-2769-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "1632 BURLNGTN 1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "55f5bf5b-a8e9-4475-276a-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "1632 BURLNGTN 1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "a5f6c251-7e70-494e-8a24-a3fbeffb25a0",
+        "name": "Oasis at Mainway",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.390405,
+            "longitude": -79.779162
+        },
+        "stations": [
+            {
+                "id": "515fda6f-e9f8-4aac-91f3-9c8afb4ff693",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-12698",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "ccd69220-3350-439c-8a29-c4d3e96740a9",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-12601",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "6700b488-a6b6-4949-9ae6-e52df592c7bb",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-12537",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "1dfec43e-b5c1-4716-af33-f04a24252547",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-12697",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "d5265e8e-f655-b20b-ef60-c08155defba5",
+        "name": "HAMILTON PUBLIC 1023 KING ST",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.261614,
+            "longitude": -79.905671
+        },
+        "stations": [
+            {
+                "id": "36f95e13-10e8-4cc6-a5e5-a68f0fa72a9f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "1023 KING ST-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "42d9681c-670a-4c80-908b-a801416c1a98",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "1023 KING ST-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "6747768a-0dc6-d6ed-0a03-6f4f28395dda",
+        "name": "PARKING GARAGE LEVEL 6A - 3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.324048,
+            "longitude": -79.798083
+        },
+        "stations": [
+            {
+                "id": "e3916119-2515-4db5-21d6-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 3-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "9afe9d08-052e-4d9f-21d7-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 3-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "547e75be-8ee6-f6c5-6864-89f68c23b2cb",
+        "name": "HOPA PORTS 605 STATION 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.273349,
+            "longitude": -79.86246
+        },
+        "stations": [
+            {
+                "id": "5c35f0ff-3429-4240-af3c-dbe36b0cce6b",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "f1444269-c0a1-44b6-a461-f2cfc0cf3231",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "972c0fbb-a9b8-d64b-31b4-c2dd06b5a797",
+        "name": "JBH LOT 1-1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.316919,
+            "longitude": -79.803247
+        },
+        "stations": [
+            {
+                "id": "ca55663e-44b0-4a80-b806-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 1-1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "76ffe00b-00e7-4993-b807-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 1-1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "3c7f1b7b-16d7-eca5-baae-44b939f07c24",
+        "name": "BEACHWAY PARK BEACHWAY PARK",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.309258,
+            "longitude": -79.800064
+        },
+        "stations": [
+            {
+                "id": "d46bd750-ff0e-4d58-a96f-13733cfd454c",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BEACHWAY PARK-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "93739da7-8bd6-4bda-9b14-561e6e5e73c5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BEACHWAY PARK-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "e7e9a795-e5c6-f603-0a35-c6a7d20b9a87",
+        "name": "HAMILTON PUBLIC STATION 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.25991,
+            "longitude": -79.86978
+        },
+        "stations": [
+            {
+                "id": "1e8cac5e-f042-4995-b643-37a8c53c30bc",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 2-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "cd2ce40f-0bdb-4732-a9aa-3c8ee12335c2",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 2-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "799786fb-7499-d2f9-d7e3-fef58f039a75",
+        "name": "JBH LOT 4-2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.317942,
+            "longitude": -79.802689
+        },
+        "stations": [
+            {
+                "id": "4a424e87-6c8e-462d-ac9f-3eb2f55accb7",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 4-2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "dc680080-da2f-4997-8d4a-eff644249e4b",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 4-2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "e2c0e5bd-d248-2a4b-9246-fa4c2273da30",
+        "name": "MAINWAY ARENA MAINWAY ARENA",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.37317,
+            "longitude": -79.79516
+        },
+        "stations": [
+            {
+                "id": "e008e4db-b247-4289-9d45-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "MAINWAY ARENA-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "fd770657-4e4c-48f6-9d46-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "MAINWAY ARENA-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "7310ba61-4082-4de8-6e15-a3f978e3003c",
+        "name": "JBH P1-2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.315408,
+            "longitude": -79.80275
+        },
+        "stations": [
+            {
+                "id": "d9a9f5fc-5caa-4be5-b802-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "P1-2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "b882c8a4-9e9c-4fc8-b803-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "P1-2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "6a090f5b-05bf-13c7-f27c-8d34f0895f58",
+        "name": "7 INNOVATION HTC 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.310067,
+            "longitude": -79.91775
+        },
+        "stations": [
+            {
+                "id": "e8088cde-f256-49d8-b637-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "HTC 1-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "0e611747-ed32-204b-fbac-b7e292eab697",
+        "name": "KEGSTEAKHOUSE KEG STEAKHOUSE1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.217074,
+            "longitude": -79.886849
+        },
+        "stations": [
+            {
+                "id": "fa338a10-a3ea-41a2-272c-08dbce593b49",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "KEG STEAKHOUSE1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "4f893f95-5fd8-4b8b-272d-08dbce593b49",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "KEG STEAKHOUSE1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "7484a311-d5f7-6b74-8861-d02a9d8fadee",
+        "name": "HAMILTON PUBLIC 297 KING ST",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.25406,
+            "longitude": -79.8604
+        },
+        "stations": [
+            {
+                "id": "e5fcb346-246d-4644-a5f7-774343aa6e78",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "297 KING ST-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "103b165e-1b03-49b6-874a-9f92e3df600a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "297 KING ST-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "161768a1-857d-1089-9533-487fea92a1cf",
+        "name": "PARKING GARAGE LEVEL 6A - 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.324129,
+            "longitude": -79.797751
+        },
+        "stations": [
+            {
+                "id": "dee00816-3dad-4156-8812-7ec51d954c61",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 1-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "d48738c1-33a6-4853-ae48-e8055d53f044",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 1-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "02934c78-50b8-48bf-8ea6-e9e38285d2bf",
+        "name": "3077 New Street  Burlington - Office Building",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.340883,
+            "longitude": -79.783494
+        },
+        "stations": [
+            {
+                "id": "4db6dc6b-3078-470e-85f8-2590315c47ff",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-21225",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "87cfb209-f313-4266-b98b-f117e5fc5988",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-21223",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "928f9406-6a3c-c5e3-718c-020f1f20e4bd",
+        "name": "PARKING LOTS LOT4-421 JOHN",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.32581,
+            "longitude": -79.795877
+        },
+        "stations": [
+            {
+                "id": "ad6c30bf-dd26-471d-21d2-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT4-421 JOHN-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "bb6255a1-596d-4983-21d3-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT4-421 JOHN-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "f21fb29c-5728-09b8-f800-96ba2386b0c1",
+        "name": "HOPA PORTS 210 HILLYARD S1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.271362,
+            "longitude": -79.837389
+        },
+        "stations": [
+            {
+                "id": "23fded13-002a-4fa9-b850-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "210 HILLYARD S1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "0cf6bd3b-cb98-49ec-b851-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "210 HILLYARD S1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "6e406a8b-f41b-dbf2-272e-25776642b923",
+        "name": "HAMILTON PUBLIC LOWER DECK RH",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.255424,
+            "longitude": -79.873344
+        },
+        "stations": [
+            {
+                "id": "01f2d340-32d5-4177-9b4e-769f01e7e08e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOWER DECK RH-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "ff82bda3-4942-4b21-84d9-c39edabd35c8",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOWER DECK RH-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "a2f9f3bb-47e6-31ab-71dc-4c72772002c7",
+        "name": "NELSON CENTRE NELSON CENTRE",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.360973,
+            "longitude": -79.762978
+        },
+        "stations": [
+            {
+                "id": "76c8852e-3d70-4f54-9d47-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "NELSON CENTRE-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "a1a4543d-3186-4dce-9d48-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "NELSON CENTRE-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "61512db1-64f8-f8fa-f659-209cc2658361",
+        "name": "PARKING GARAGE LEVEL 1A - 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.324078,
+            "longitude": -79.797862
+        },
+        "stations": [
+            {
+                "id": "2303f7ed-52bd-4585-21da-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 1A - 2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "738f9183-118b-4928-21db-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 1A - 2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "5ec65db1-8af1-cfe3-60e5-6299bd1facf8",
+        "name": "MOHAWK RESIDENCE # 4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.239841,
+            "longitude": -79.889243
+        },
+        "stations": [
+            {
+                "id": "2a135feb-64dc-4c22-9b19-f1bebd449805",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 4-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "ce116f91-5dbc-4127-b5f1-f2ac97527a03",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 4-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "f732ec20-73d2-407c-b124-ad3c7aeca538",
+        "name": "MBBCAN L3 CUSTOMER PL",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.323539,
+            "longitude": -79.84996
+        },
+        "stations": [
+            {
+                "id": "d02d2e2d-cf76-4636-abe8-53c4832154bb",
+                "connectors": [
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "OutOfService",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "L3 CUSTOMER PL-2",
+                "chargingSpeed": 80
+            },
+            {
+                "id": "6c88b0f0-9b66-4a68-99cb-ccf6839038af",
+                "connectors": [
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "OutOfService",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "L3 CUSTOMER PL-1",
+                "chargingSpeed": 80
+            }
+        ]
+    },
+    {
+        "id": "3d6f621c-8110-9d2e-8bfa-7002437fcc1b",
+        "name": "ACURAOAKVILLE SHOP BAY",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.427167,
+            "longitude": -79.725384
+        },
+        "stations": [
+            {
+                "id": "867b3da0-8fa6-4c81-95d0-5c88abaaf949",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "SHOP BAY-1",
+                "chargingSpeed": 12
+            }
+        ]
+    },
+    {
+        "id": "6880e13a-c8a2-d781-0ceb-f761d7809204",
+        "name": "HAMILTON PUBLIC STATION A",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.217697,
+            "longitude": -79.76303
+        },
+        "stations": [
+            {
+                "id": "74fb4a90-12f0-45ce-9ec2-9d6ce5a8fd16",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION A-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "c74b6859-64da-4a3e-a31d-c1e5a6bfef65",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION A-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "63ddb07c-7dca-8d89-1f1a-1d234e56cbcf",
+        "name": "HHEALTHCARE OTMH STATION 5",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.450638,
+            "longitude": -79.766029
+        },
+        "stations": [
+            {
+                "id": "3095a11a-63e7-4dc2-a68e-16e8e296820d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 5-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "e3894615-d81d-41fd-9d76-2b8f1d0e9ae2",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 5-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "d02bc2dd-6db7-eb76-aa82-fac5c52afbcc",
+        "name": "SJHH CHAR RAMP 3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.247402,
+            "longitude": -79.872183
+        },
+        "stations": [
+            {
+                "id": "e55d7e16-d441-4d64-81c0-6a22d1377010",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CHAR RAMP 3-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "2283e78e-053f-403b-8a80-9c18d4194399",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CHAR RAMP 3-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ae368b5f-aee9-854c-3a54-6bb1e0e32dd0",
+        "name": "ACURAOAKVILLE CLIENT CENTER",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.426907,
+            "longitude": -79.725357
+        },
+        "stations": [
+            {
+                "id": "2b688f75-0543-448a-9446-51d00911d04f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "CLIENT CENTER-1",
+                "chargingSpeed": 12
+            }
+        ]
+    },
+    {
+        "id": "553f59c4-d668-9d08-9806-c69f4815699d",
+        "name": "HOPA PORTS 605 STATION 4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.27319,
+            "longitude": -79.86253
+        },
+        "stations": [
+            {
+                "id": "08af7f48-0b88-471b-90ff-39bec197b870",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 4-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "29b41cca-3eec-487d-90b8-43eec798a2b3",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 4-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "a6229575-76eb-4cda-91b5-52bf68f306da",
+        "name": "Budds\u2019 Mazda Oakville - Exterior",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.4270781740169,
+            "longitude": -79.724270630416
+        },
+        "stations": [
+            {
+                "id": "0b454d5e-738d-42d8-8fcc-52ec794c3a42",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-00637",
+                "chargingSpeed": 16
+            },
+            {
+                "id": "220b6e19-2602-4669-85fb-6614760a8485",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-00642",
+                "chargingSpeed": 16
+            }
+        ]
+    },
+    {
+        "id": "9b20549f-bb4e-36c4-e709-f0ca75b61f0a",
+        "name": "TANSLEY WOODS TANSLEY WOODS 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.381755,
+            "longitude": -79.799393
+        },
+        "stations": [
+            {
+                "id": "08b6a30e-d23f-4476-9d3e-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "TANSLEY WOODS 2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "ffc7d7e8-194e-499d-9d3f-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "TANSLEY WOODS 2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "d8ebb82b-f64c-4594-b218-6b935eb079bf",
+        "name": "Hamilton Conservation Authority - Main Office",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.236119,
+            "longitude": -80.008216
+        },
+        "stations": [
+            {
+                "id": "033bd0ed-997e-4948-a375-1b5db25540b6",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-03646",
+                "chargingSpeed": 16
+            },
+            {
+                "id": "846ba5e7-7e36-40bf-bca6-24b779194526",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-03655",
+                "chargingSpeed": 16
+            },
+            {
+                "id": "3e9df857-f7c4-4443-a59b-cf1d2dd614ab",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-03647",
+                "chargingSpeed": 16
+            },
+            {
+                "id": "bfa6bfbd-45a6-474e-ba45-ff22969ffd74",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAJ-03670",
+                "chargingSpeed": 16
+            }
+        ]
+    },
+    {
+        "id": "87ebf66d-9527-14dc-1599-42e8f0d6e214",
+        "name": "HOPA PORTS 500 SHERMAN S1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.268845,
+            "longitude": -79.830507
+        },
+        "stations": [
+            {
+                "id": "7f18aef3-874f-41c8-adda-bf81ae04d5a6",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "500 SHERMAN S1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "364a066b-5e29-4200-a801-e5f969e4e694",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "500 SHERMAN S1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "adc6919b-3f60-d965-4e01-63024772400b",
+        "name": "HHEALTHCARE OTMH STATION 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.450504,
+            "longitude": -79.76581
+        },
+        "stations": [
+            {
+                "id": "ed7d3827-d2f1-4606-8da8-2ea90a601ce9",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "deac0524-ac7a-4a6d-a154-83527f9bddc7",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "dbe4deb5-677c-9e85-4b73-4676e5bb9667",
+        "name": "ECCC FRONT LOT 3-4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.298981,
+            "longitude": -79.800142
+        },
+        "stations": [
+            {
+                "id": "ab54bd4f-47e3-42ae-aff8-08dbc668e0d1",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "FRONT LOT 3-4-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "76e8dd8e-3f91-4eff-aff9-08dbc668e0d1",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "FRONT LOT 3-4-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "0f0106e2-5f72-5b98-99db-5f639034a614",
+        "name": "C20346 Ancaster",
+        "networkId": 9,
+        "geoCoordinates": {
+            "latitude": 43.226969,
+            "longitude": -79.94769
+        },
+        "stations": [
+            {
+                "id": "a4e95be6-52e2-4f3e-bac4-3dcb20fe2c68",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "33329",
+                "chargingSpeed": 50
+            },
+            {
+                "id": "4e1b33c8-c807-4974-af29-606c7ec65687",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "InUse",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "33328",
+                "chargingSpeed": 50
+            }
+        ]
+    },
+    {
+        "id": "bd860196-8cbd-4481-98a4-85a696ed6d29",
+        "name": "City of Hamilton - Lot 3",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.216031,
+            "longitude": -79.756926
+        },
+        "stations": [
+            {
+                "id": "14e346b7-966d-4555-b6b4-11535787868a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-16282",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "26916f6a-53c5-44d7-848f-15e718587f74",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-31094",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "291b00d1-8e69-4b78-9bdb-c41f6fa7b67e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-16289",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "d2c67234-4641-45b8-a4e8-cf655876008a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-16283",
+                "chargingSpeed": 7
+            }
+        ]
+    },
+    {
+        "id": "4fba949c-cb8b-4bec-a5b0-9b26164d23c6",
+        "name": "McMaster University - Gerald Hatch Centre",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.2601379,
+            "longitude": -79.9204095
+        },
+        "stations": [
+            {
+                "id": "3d917779-2954-4eb0-a8d0-9b4ad22a827d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAA-10881",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "e225ee84-ab66-41ce-b72e-e9bb0a5312db",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAA-10811",
+                "chargingSpeed": 7
+            }
+        ]
+    },
+    {
+        "id": "dbed0842-c7f0-9e17-7307-1ceaf87ab1e2",
+        "name": "HAMILTON PUBLIC 140 KING WILL 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.255694,
+            "longitude": -79.86326
+        },
+        "stations": [
+            {
+                "id": "8c5581bd-5fc8-44db-a0d0-ceeac9fdcf2f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "140 KING WILL 1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "1d1720cf-0306-409f-8203-d604c0a4bac9",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "140 KING WILL 1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "c8c77de0-8f3b-77f8-74f3-a6f7587f0a1c",
+        "name": "C12416 Burlington EV",
+        "networkId": 9,
+        "geoCoordinates": {
+            "latitude": 43.3876,
+            "longitude": -79.78053
+        },
+        "stations": [
+            {
+                "id": "815527ea-f9b2-4065-d0ba-08db9dfe9cbf",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "33516",
+                "chargingSpeed": 50
+            },
+            {
+                "id": "6e0f2b36-9d92-4c34-d0bb-08db9dfe9cbf",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "33517",
+                "chargingSpeed": 50
+            }
+        ]
+    },
+    {
+        "id": "5e978db5-a770-5e76-4d65-ec681acb4810",
+        "name": "MOHAWK SECURITY",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.237461,
+            "longitude": -79.888099
+        },
+        "stations": [
+            {
+                "id": "a86bee2b-b061-4b83-81ff-c8a937f32462",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "SECURITY-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "a2205f3d-e418-419f-8a33-e95bfb2fef07",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "SECURITY-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "612ac322-62ac-ca0e-6892-6bd536a0730a",
+        "name": "7 INNOVATION HTC 3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.310094,
+            "longitude": -79.917739
+        },
+        "stations": [
+            {
+                "id": "35d2d95c-8d28-4d8f-b638-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "HTC 3-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "9ecf7d19-f2dd-242a-3491-3e635bae3630",
+        "name": "MOUNTAINSIDE MOUNTAINSIDE",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.353143,
+            "longitude": -79.824153
+        },
+        "stations": [
+            {
+                "id": "0e220ce5-1951-42a7-c88f-08dbaf123ea5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "MOUNTAINSIDE-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "047fbf70-8380-48b5-c890-08dbaf123ea5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "MOUNTAINSIDE-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "15ffdfb2-8106-525a-dca3-1ddbbb69e4d6",
+        "name": "BURL MAZDA MAZDA P-L",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.363194,
+            "longitude": -79.7821
+        },
+        "stations": [
+            {
+                "id": "7c249a5f-812b-4021-995b-664e7bb115de",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "MAZDA P-L-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "bb035016-c746-4b0c-9bd3-fca8d95239fa",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "MAZDA P-L-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "5524ce1e-cdda-d7be-a72c-5cf1041322b6",
+        "name": "SJHH CHAR RAMP 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.247881,
+            "longitude": -79.871552
+        },
+        "stations": [
+            {
+                "id": "cbcdc0c5-4ede-476f-884c-b4a62dbd31da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CHAR RAMP 1-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "08543fb5-a09d-4ef8-b186-c969d620f9a8",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CHAR RAMP 1-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "98cd2f64-7f5c-0b29-5e4b-ff2522edc906",
+        "name": "CENTRAL ARENA CENTRAL ARENA 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.335555,
+            "longitude": -79.792375
+        },
+        "stations": [
+            {
+                "id": "706224ab-61db-4fa0-21c4-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "CENTRAL ARENA 1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "7c7cb9d8-2396-4b9f-21c5-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "CENTRAL ARENA 1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "af491dde-523e-895a-45ca-94681a98281a",
+        "name": "HAMILTON PUBLIC 15 BRUCEDALE AV",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.23924,
+            "longitude": -79.8779
+        },
+        "stations": [
+            {
+                "id": "b2d99993-071b-4971-9d04-23d3139ebe1d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "15 BRUCEDALE AV-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "d2a884bd-4d12-47f7-bd99-ac1e5c6557a0",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "15 BRUCEDALE AV-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ae8152d3-372a-63be-3337-5a85504e6c5c",
+        "name": "HOPA PORTS 1632 BURLNGTN 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.256387,
+            "longitude": -79.794521
+        },
+        "stations": [
+            {
+                "id": "e65ce1e3-81cb-4881-2768-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "1632 BURLNGTN 2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "dcbfb625-6570-49d3-276b-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "1632 BURLNGTN 2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "f318a88f-ce1c-e25c-3814-3e95e45664c6",
+        "name": "PARKING LOTS LOT5-391 BRANT",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.326032,
+            "longitude": -79.79739
+        },
+        "stations": [
+            {
+                "id": "c03f3802-c350-4803-b392-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT5-391 BRANT-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "d14de179-0560-4e24-b393-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT5-391 BRANT-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "49e9ee4d-0d9b-1006-4c9a-26141fdc9513",
+        "name": "PARKING GARAGE LEVEL 1A - 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.324123,
+            "longitude": -79.797797
+        },
+        "stations": [
+            {
+                "id": "cf691833-1b92-4027-9569-3a6e1660e667",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 1A - 1-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "ec6b0cea-5b6e-48fc-b3e3-919dd7eb0460",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 1A - 1-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "28236c45-e7e8-b6f6-e144-9c72bc16a5cb",
+        "name": "FENGATE STATION STATION1122-GW1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.391827,
+            "longitude": -79.76202
+        },
+        "stations": [
+            {
+                "id": "2ea7cb08-f713-4220-2377-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION1122-GW1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "c2476bdc-71bd-4d80-2378-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION1122-GW1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "a12c352f-d31f-43df-5198-ced3ffa662f8",
+        "name": "APPLEBY ARENA APPLEBY ARENA 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.386219,
+            "longitude": -79.775432
+        },
+        "stations": [
+            {
+                "id": "a67e322c-ab71-449f-c895-08dbaf123ea5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "APPLEBY ARENA 1-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "2ea655b7-4dbf-4a68-c896-08dbaf123ea5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "APPLEBY ARENA 1-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "5cd8603a-bbee-8110-e884-438f9a9901d4",
+        "name": "OAKVILLE STATION #1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.412357,
+            "longitude": -79.735076
+        },
+        "stations": [
+            {
+                "id": "0c57e262-0306-486a-a343-ebeb184eff2f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "STATION #1-1",
+                "chargingSpeed": 12
+            }
+        ]
+    },
+    {
+        "id": "886247f5-e09a-406b-a965-4c1dd718556b",
+        "name": "City of Hamilton - Hutch's",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.258803,
+            "longitude": -79.765223
+        },
+        "stations": [
+            {
+                "id": "c244a7a0-580f-4ba6-a6c4-12f829b8a92d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-16277",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "af8a400b-b42a-4a8b-98de-5e144d110383",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-16223",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "2caa4500-8810-427d-afe1-7b2cd6304a1d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-16285",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "69d5b6a3-260e-4601-9185-f362f75b0eed",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-16276",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "18be4578-7aa8-b5d9-c9af-bf6ee8740399",
+        "name": "HAMILTON PUBLIC 140 KING WILL 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.25571,
+            "longitude": -79.86326
+        },
+        "stations": [
+            {
+                "id": "5fedd08e-4a98-47d5-90c0-4a900a828ebf",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "140 KING WILL 2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "b29a147f-c783-479c-aee0-dfe4b902069d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "140 KING WILL 2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "9c98641a-bc49-4eee-a3c6-90b3c44ed826",
+        "name": "N-FB-0954, 3515-3545 Rebecca Street ",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.38315,
+            "longitude": -79.738699
+        },
+        "stations": [
+            {
+                "id": "3ce55b78-551f-4974-a860-2b49ca140b60",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-26441",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "e1e02f09-0041-4684-8941-47191e8ee936",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-26443",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "64369eb4-6d58-46c4-b4b1-cd4b64c2fb0c",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-26427",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "6d649892-359a-418f-a1a6-d172afccd7ad",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-26435",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "93bf4227-2abe-7a7a-13c0-782aff5ce249",
+        "name": "HAMILTON PUBLIC STATION 6",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.25645,
+            "longitude": -79.87261
+        },
+        "stations": [
+            {
+                "id": "39b9a745-2122-470a-9103-63c1516ffcdd",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "STATION 6-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "7fcc0ead-d4e3-4a38-ba09-eb62908496c2",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "STATION 6-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ebed8690-cbb2-3870-fb54-150910f605f2",
+        "name": "HAMILTON PUBLIC LOWER DECK LH",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.255447,
+            "longitude": -79.873398
+        },
+        "stations": [
+            {
+                "id": "c70f8a5a-beb2-4b23-86a8-a3e6be65260b",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOWER DECK LH-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "a2864d07-6670-4f97-bfa3-ce0a0da4f35f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOWER DECK LH-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "06b150dd-f4f7-ee92-963f-82dd0dff7b95",
+        "name": "OAKVILLE EV QQEC2201",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.405182,
+            "longitude": -79.718779
+        },
+        "stations": [
+            {
+                "id": "23f25caf-51d6-4211-2225-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "QQEC2201-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "885569e9-b686-4fed-2226-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "QQEC2201-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "442ae4fd-35a2-7d13-f84c-196ffc001ede",
+        "name": "JBH LOT 11-1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.315726,
+            "longitude": -79.80219
+        },
+        "stations": [
+            {
+                "id": "e59f0bfb-71ad-4a11-2637-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 11-1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "c0475aa6-3fbb-45c7-2638-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 11-1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "206ef490-9fb6-beeb-8775-08160acb2d89",
+        "name": "HAMILTON PUBLIC STATION 4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.256442,
+            "longitude": -79.872556
+        },
+        "stations": [
+            {
+                "id": "73860ea3-c3e4-4bc9-8ade-a21798f09ea7",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 4-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "3d9b6fe1-7032-49e6-9e5f-cc75b121971d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 4-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "6032e039-52da-6e80-d300-d99896916991",
+        "name": "JBH LOT 4-1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.317969,
+            "longitude": -79.802649
+        },
+        "stations": [
+            {
+                "id": "b09569ff-15c0-45df-2635-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 4-1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "24440446-70f3-447c-2636-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 4-1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "488e5799-7d20-4c89-923d-5c46448cf264",
+        "name": "Mapleview Shopping Centre",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.326579,
+            "longitude": -79.819922
+        },
+        "stations": [
+            {
+                "id": "c6cf0447-3134-46f1-9cdd-253b98dad0f5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAA-10720",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "91aef895-7f95-4e40-bcb6-bd0cd2411bce",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAA-10727",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "1c75bb20-c7c0-4b7a-84ad-c907e3cb0d89",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAA-11160",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "27ca2312-fff5-ef57-8d16-06e8c119e517",
+        "name": "PARKING LOTS LOT1-431 ELIZAB",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.326935,
+            "longitude": -79.79552
+        },
+        "stations": [
+            {
+                "id": "15b5bb9b-28a5-4b66-bbc3-156c3983d661",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT1-431 ELIZAB-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "857137bc-d63f-4792-9337-245974140975",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT1-431 ELIZAB-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ee851218-8095-9412-edf2-d8f3a415e42e",
+        "name": "HALTON HONDA FAST CHARGER",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.364374,
+            "longitude": -79.780201
+        },
+        "stations": [
+            {
+                "id": "03499035-eb58-41f0-b2e6-ea44d97b9b08",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "FAST CHARGER-1",
+                "chargingSpeed": 62
+            }
+        ]
+    },
+    {
+        "id": "91bec509-eb67-91b0-ec40-a85bcf8ecdf3",
+        "name": "HHEALTHCARE OTMH STATION 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.450482,
+            "longitude": -79.765739
+        },
+        "stations": [
+            {
+                "id": "837a27b2-0d8f-4c6b-bc23-491364ec681a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 1-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "34f709b8-2f41-499a-a37e-6b397e60e32e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "OTMH STATION 1-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "aef454dd-f8e9-6fd2-3b59-55bb2ba0179f",
+        "name": "KEGSTEAKHOUSE KEG STEAKHOUSE2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.216499,
+            "longitude": -79.887027
+        },
+        "stations": [
+            {
+                "id": "033f4e46-3e64-44fe-2730-08dbce593b49",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "KEG STEAKHOUSE2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "71c92282-2b25-4bc6-2731-08dbce593b49",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "KEG STEAKHOUSE2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "82831d3a-2a41-4a3d-9c23-cfadbb673cab",
+        "name": "IBEW LOCAL 105",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.17848623488877,
+            "longitude": -79.84338032195618
+        },
+        "stations": [
+            {
+                "id": "106f264b-ce63-46a2-9382-0c714e6fe3a2",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-19777",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "b7abe6c0-882c-49b2-a674-fd3c668442c8",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-19779",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "f377a934-c170-5f64-29b1-a5358dc0286a",
+        "name": "HAMILTON PUBLIC 171 MAIN ST",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.253822,
+            "longitude": -79.862854
+        },
+        "stations": [
+            {
+                "id": "5d8dae63-40c0-4da2-b338-58f35db6c3bd",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "171 MAIN ST-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "a889b70c-fe66-4613-91c6-940ab9c28dbd",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "171 MAIN ST-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ec860a67-07af-8277-4a23-a86b0f66f91e",
+        "name": "PARKING LOTS LOT3-533 JOHN",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.328995,
+            "longitude": -79.801349
+        },
+        "stations": [
+            {
+                "id": "c01a5a07-8d64-4dc3-b394-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT3-533 JOHN-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "3e6d3172-c2b0-4e20-b395-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT3-533 JOHN-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "bf79b8c0-ff72-d94d-38b4-86a074166648",
+        "name": "SJHH W5 P4",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.240445,
+            "longitude": -79.884108
+        },
+        "stations": [
+            {
+                "id": "51e4a7ac-550f-4f99-a604-251b46775af5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "W5 P4-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "86ad3b77-55e0-4b66-85b9-a511a0acd94e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "W5 P4-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "598708ab-d9fd-3af4-a473-f4b4c2f02197",
+        "name": "HOPA PORTS 605 STATION 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.273288,
+            "longitude": -79.86248
+        },
+        "stations": [
+            {
+                "id": "82d116cd-a10a-4cde-abd1-0a4785c8cf4e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "13a9e540-adac-4914-8031-51a019e86089",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "605 STATION 2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "a980eb47-27e0-5ce2-037d-3f3f80566e71",
+        "name": "PORT 1 SANDMANHAM1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.244064,
+            "longitude": -79.755773
+        },
+        "stations": [
+            {
+                "id": "1d9f201a-c4da-47b9-b25e-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "SANDMANHAM1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "10f1df21-d9a5-4f68-b25f-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "SANDMANHAM1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "a3289493-fa16-8621-23eb-f802b198e80c",
+        "name": "MARANATHA MGEV 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.345121,
+            "longitude": -79.775948
+        },
+        "stations": [
+            {
+                "id": "f964a477-6a1c-446e-ab73-1fe6d3a78217",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "MGEV 2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "1e33ff92-e21e-4e25-b542-af7e09df49ae",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "MGEV 2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "0cd4c327-8280-9006-d356-be75c5ab3c69",
+        "name": "JBH LOT 1-2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.316858,
+            "longitude": -79.803216
+        },
+        "stations": [
+            {
+                "id": "5a39d446-d298-44a0-2639-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 1-2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "cbae151f-5806-4b3e-263a-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "LOT 1-2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "03e07f51-06d6-462a-a14f-c729bee11c4a",
+        "name": "FLO - Cadillac Fairview -  Lime Ridge Mall",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.217348,
+            "longitude": -79.86265
+        },
+        "stations": [
+            {
+                "id": "6741e1d1-4a2a-410c-9985-59d9c7d17845",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAA-10416",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "d8cc7197-2cb8-472a-8c12-a51a6a21e3a5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAA-10445",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "67798c24-8b7d-4ccc-9cc8-a94f7aba9f88",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "InUse",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAC-00093",
+                "chargingSpeed": 50
+            }
+        ]
+    },
+    {
+        "id": "bcc4729d-3678-4f76-d13a-6bd6b464256b",
+        "name": "MARCELLO MOUNTAIN MITSU",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.200968,
+            "longitude": -79.89479
+        },
+        "stations": [
+            {
+                "id": "7b5036bb-d35e-44d6-2565-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "1 - MOUNTAIN MIT",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "e8d2bffc-b3bd-4d82-2566-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "2 - MOUNTAIN MIT",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "0497a34f-ae79-d7bf-c343-1dfec1b795f4",
+        "name": "HOPA PORTS 450 SHERMAN S1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.267272,
+            "longitude": -79.83112
+        },
+        "stations": [
+            {
+                "id": "337da169-6eb7-45e5-d8b8-08db9cc31039",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "450 SHERMAN S1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "311270ca-daa1-4c85-d8b9-08db9cc31039",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "450 SHERMAN S1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "33303f41-7392-40d2-ab3c-acadbd0ccc6f",
+        "name": "Ancam Solutions Company Ltd.",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.421889,
+            "longitude": -79.72351
+        },
+        "stations": [
+            {
+                "id": "992768ca-1f84-4bb1-93f6-19a02e8902f8",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-11786",
+                "chargingSpeed": 7
+            }
+        ]
+    },
+    {
+        "id": "40ac2db0-8fdc-9a27-c1bf-75dd859633d8",
+        "name": "NORTON PARK NORTON PARK",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.398886,
+            "longitude": -79.818448
+        },
+        "stations": [
+            {
+                "id": "8463e672-94aa-45fd-9d43-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "NORTON PARK-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "3b9fd0c4-46de-4532-9d44-08dbab30a889",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "NORTON PARK-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "5cc17961-d794-ba77-6f9d-54c3a55800c0",
+        "name": "IKEA 040 BURLINGTON CX3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.327644,
+            "longitude": -79.82841
+        },
+        "stations": [
+            {
+                "id": "5e121ed5-96dd-4301-b312-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX3-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "a2c5d8c1-2c42-42ab-b313-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BURLINGTON CX3-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "03a55a0f-21e9-4c9d-9b0a-96d1d890c546",
+        "name": "Kamisa Investments",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.368736,
+            "longitude": -79.791338
+        },
+        "stations": [
+            {
+                "id": "18116c09-bb82-4e63-855c-2bfa71776356",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-12260",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "563774a7-f604-4037-ae5d-42f8630d8dc5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-12259",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "8adc49a0-bbf9-4991-913c-800b18ceee8e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-12254",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "35db2a24-e412-e2b2-805f-a41d53de3ead",
+        "name": "MBBCAN L2 CUSTOMER CP6",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.323592,
+            "longitude": -79.849973
+        },
+        "stations": [
+            {
+                "id": "8f43bcf0-0168-4f2e-b077-45ea8f74e4ef",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "L2 CUSTOMER CP6-",
+                "chargingSpeed": 12
+            },
+            {
+                "id": "d4047394-2417-4c9a-ab00-e3b97731ed90",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "L2 CUSTOMER CP6-",
+                "chargingSpeed": 12
+            }
+        ]
+    },
+    {
+        "id": "cd7e4279-f43b-4130-b126-081247425eaa",
+        "name": "AURA Burlington Centre",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.347144,
+            "longitude": -79.793638
+        },
+        "stations": [
+            {
+                "id": "9b239f49-818b-4cd0-a646-4c53c1ca9981",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAL-00441",
+                "chargingSpeed": 45
+            },
+            {
+                "id": "7302d66c-e1dd-4ada-999d-a6e1d1e26fab",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAL-00422",
+                "chargingSpeed": 45
+            },
+            {
+                "id": "eb1d509d-482a-4965-88cb-de0843796a01",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAL-00442",
+                "chargingSpeed": 45
+            },
+            {
+                "id": "f1e4d9d9-bd96-45f8-9c21-efef9dfa32f3",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "Available",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAL-00423",
+                "chargingSpeed": 45
+            }
+        ]
+    },
+    {
+        "id": "56373b57-39bf-0ac3-df36-780fb668fc05",
+        "name": "RPF RPF HQ PUBLIC",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.356819,
+            "longitude": -79.791655
+        },
+        "stations": [
+            {
+                "id": "280af3ac-bc4d-4815-95f1-70c4d2f87138",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "RPF HQ PUBLIC-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "36d4ddf2-6350-4e3c-b608-83d5835303cf",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "RPF HQ PUBLIC-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ca5ccfb6-db7b-4ea8-9e30-9ddf7dde6d9f",
+        "name": "Vineland Research Campus",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.2635256,
+            "longitude": -79.8543701
+        },
+        "stations": [
+            {
+                "id": "d2f75b7d-a719-4763-8475-835fa3c84b6d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-11781",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "c4ccfc29-3a6b-439a-a52a-c7af308c5291",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAB-11649",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "f219ff02-8ed9-4971-9587-3a0aae439f3a",
+        "name": "FLO - Canadian Tire - Hamilton Mountain",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.228748,
+            "longitude": -79.880776
+        },
+        "stations": [
+            {
+                "id": "e04eac65-ea79-4e1b-8a44-2153c5c9e27b",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAA-10694",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "2da191d2-393d-4f0b-959f-21cd950cd462",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "AAA-10688",
+                "chargingSpeed": 7
+            },
+            {
+                "id": "0f882813-39c3-4d4d-a1d0-df4dcd8c5d16",
+                "connectors": [
+                    "CHADEMO",
+                    "IEC_62196_T1_COMBO"
+                ],
+                "status": "InUse",
+                "level": "L3",
+                "freeOfCharge": false,
+                "name": "AAC-00108",
+                "chargingSpeed": 50
+            }
+        ]
+    },
+    {
+        "id": "7f834a04-649b-2502-7a26-2d869a3458b0",
+        "name": "SHOWROOM SHOWROOM",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.198209,
+            "longitude": -79.894832
+        },
+        "stations": [
+            {
+                "id": "14fcd636-fce0-4dbe-78aa-08dbaa29f79e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "SHOWROOM-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "c6fdcaec-d6ba-4731-78ab-08dbaa29f79e",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "SHOWROOM-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "0ca7e619-3172-1e4a-6047-0971b92844e0",
+        "name": "HAMILTON PUBLIC STATION 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.25954,
+            "longitude": -79.869484
+        },
+        "stations": [
+            {
+                "id": "e1984ae9-572a-4c7d-8742-1aee21c8d463",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "f0d90f30-446f-4098-a4f7-7301cbb109b2",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "3cdcfe69-fa15-6d12-c98f-62a788007d3d",
+        "name": "MOHAWK RESIDENCE # 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.239961,
+            "longitude": -79.889795
+        },
+        "stations": [
+            {
+                "id": "6b9eb693-e60d-48bb-856e-83cd471c1b76",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "485a6f0b-622b-4fae-b165-c13d3162bd94",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "03332ae5-151d-e6ef-860b-e2fe1f94dd24",
+        "name": "PARKING GARAGE LEVEL 6A - 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.324103,
+            "longitude": -79.798029
+        },
+        "stations": [
+            {
+                "id": "ce263853-57a6-4068-b3a0-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "625889ca-ec07-492f-b3a1-08db8aa80d2a",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LEVEL 6A - 2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "ed1bac65-652e-b205-8cb4-70478f9fff9a",
+        "name": "MARANATHA MGEV 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.345103,
+            "longitude": -79.7759
+        },
+        "stations": [
+            {
+                "id": "68a35272-c2fb-4d7f-80ba-e398e982f355",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "MGEV 1-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "bd5c51f9-ffdc-4200-a1ae-e4f7596de05c",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "MGEV 1-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "9f66a2fb-fbca-437f-bdb3-e23b7524be26",
+        "name": "Redeemer University - Lot B",
+        "networkId": 1,
+        "geoCoordinates": {
+            "latitude": 43.2102781689282,
+            "longitude": -79.9486352292118
+        },
+        "stations": [
+            {
+                "id": "5d08e314-df2a-4bc3-b047-9b5fb1f0f050",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-19894",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "fbfb0465-b8df-4efd-b650-a3db9206b580",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "InUse",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "AAB-19899",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "42b22a94-2e5e-96b5-4d39-eed14b688b82",
+        "name": "MOHAWK SHORT TERM LOT",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.237861,
+            "longitude": -79.879413
+        },
+        "stations": [
+            {
+                "id": "38086b03-1dc9-4979-b30a-44de3e27a200",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "SHORT TERM LOT-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "797ce869-3054-491c-81c0-636b7eca5dfe",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "SHORT TERM LOT-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "00efa5d9-ba6f-623f-e0d9-8c74b28f763b",
+        "name": "CHARGE STATION STATION 1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.338781,
+            "longitude": -79.816169
+        },
+        "stations": [
+            {
+                "id": "e0a593a7-9a00-4919-2509-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "b4407fbf-bffd-4544-250a-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "957bdb0a-3e7d-fac7-f4d9-d61164e209f1",
+        "name": "BRANT HILLS CC BRANT HILLS CC",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.361159,
+            "longitude": -79.846859
+        },
+        "stations": [
+            {
+                "id": "212cb36a-4963-4e3d-9216-d7ad44603c0c",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BRANT HILLS CC-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "3e26e6cf-e851-45b6-91f7-f93205217fc5",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "BRANT HILLS CC-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "11bace1e-f915-fe22-256b-a37033688bab",
+        "name": "PARKING LOTS LOT10-1371 ELGI",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.322443,
+            "longitude": -79.800552
+        },
+        "stations": [
+            {
+                "id": "b3f951f3-33f1-4886-a943-4a218663a26d",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT10-1371 ELGI-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "762daeb2-83ed-44e9-8a81-616f559e15d0",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": true,
+                "name": "LOT10-1371 ELGI-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "d47346de-199e-9b80-6bc7-d6ac052b9b44",
+        "name": "FENGATE STATION CT4K-GW1",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.389221,
+            "longitude": -79.773143
+        },
+        "stations": [
+            {
+                "id": "f1e6006f-dec8-4596-237d-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CT4K-GW1-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "e96172ae-1ae9-493b-237e-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "CT4K-GW1-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "839a612e-2cfc-96cf-f5c3-a200fd27d267",
+        "name": "FENGATE STATION STATION1122-GW2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.39151,
+            "longitude": -79.761734
+        },
+        "stations": [
+            {
+                "id": "a5af5add-fdd5-4276-237a-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION1122-GW2-",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "62d5a0c5-31d2-4d14-237c-08db897648da",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Unknown",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION1122-GW2-",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "29d2fc14-4299-a708-d29e-a1216ca82221",
+        "name": "MOHAWK RESIDENCE # 2",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.239848,
+            "longitude": -79.889411
+        },
+        "stations": [
+            {
+                "id": "04ba8805-7ba8-449c-bb31-745347735e27",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 2-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "14dd9fcb-e1b4-421a-b3c2-853174e4f911",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "RESIDENCE # 2-2",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "27bafd13-eb71-92fb-cb97-4a0606de7342",
+        "name": "HAMILTON PUBLIC STATION 3",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.25907,
+            "longitude": -79.86885
+        },
+        "stations": [
+            {
+                "id": "4cc7261e-dc8c-4aea-84b1-2fd8f54da119",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 3-2",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "d18c17a8-487f-4f07-ab02-ccfc9bd08133",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "Available",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "STATION 3-1",
+                "chargingSpeed": 6
+            }
+        ]
+    },
+    {
+        "id": "57ce8abc-5c55-aa71-dee1-09e6bf9d0c0d",
+        "name": "ECCC FRONT LOT 5-6",
+        "networkId": 10,
+        "geoCoordinates": {
+            "latitude": 43.298981,
+            "longitude": -79.800171
+        },
+        "stations": [
+            {
+                "id": "3f4846db-36d2-459b-f7fb-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "FRONT LOT 5-6-1",
+                "chargingSpeed": 6
+            },
+            {
+                "id": "52404a4d-ad46-470e-f7fc-08dbb6d2654f",
+                "connectors": [
+                    "IEC_62196_T1"
+                ],
+                "status": "OutOfService",
+                "level": "L2",
+                "freeOfCharge": false,
+                "name": "FRONT LOT 5-6-2",
+                "chargingSpeed": 6
+            }
+        ]
+    }
+]
