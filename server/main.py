@@ -8,6 +8,10 @@ from pymongo.server_api import ServerApi
 from datetime import datetime
 from calculus import get_bounds_zoom_level
 from dotenv import load_dotenv
+from pydantic import BaseModel, RootModel
+from typing import List, Dict, Optional
+from datetime import datetime
+from bson import ObjectId
 import os
 from geopy.distance import geodesic
 import os
@@ -139,16 +143,18 @@ async def find_parks(input_data: dict):
 
 
 # Construct MongoDB URI
-uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}/?retryWrites=true&w=majority"
+uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}"
 
-# MongoDB connection setup
-try:
-    client = MongoClient(uri, server_api=ServerApi("1"))
-    db = client["betabase"]  # Access the database
-    stations_collection = db["stations"]  # Access the stations collection
-    print("MongoDB connection successful!")
-except Exception as e:
-    raise Exception(f"Failed to connect to MongoDB: {e}")
+def mongo_connect(collection="stations"):
+    # MongoDB connection setup
+    try:
+        client = MongoClient(uri, server_api=ServerApi("1"))
+        db = client["betabase"]  # Access the database
+        stations_collection = db[collection]  # Access the stations collection
+        print("MongoDB connection successful!")
+        return stations_collection
+    except Exception as e:
+        raise Exception(f"Failed to connect to MongoDB: {e}")
 
 app = FastAPI()
 
@@ -171,6 +177,7 @@ async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 
     """
     Get charging stations within a given radius (default: 5km) of provided coordinates.
     """
+    stations_collection = mongo_connect()
     user_location = (lat, lon)
     stations_within_radius = []
 
@@ -220,6 +227,7 @@ async def get_station_details(station_id: str):
     """
     Get details of a specific charging station by its ID, including nested stations.
     """
+    stations_collection = mongo_connect()
     try:
         # Iterate over all parent stations
         for parent_station in stations_collection.find():
@@ -238,3 +246,69 @@ async def get_station_details(station_id: str):
 
     # If no match is found
     raise HTTPException(status_code=404, detail="Charging station not found.")
+
+
+
+# Pydantic models for request validation
+class TariffDescription(BaseModel):
+    fr: str
+    en: str
+
+class Tariff(BaseModel):
+    id: str
+    description: TariffDescription
+
+class Connector(BaseModel):
+    type: str
+    powerType: str
+    power: int
+
+class StationDetails(BaseModel):
+    status: str
+    level: str
+    lastCheckIn: str
+    id: str
+    connectors: List[Connector]
+    tariff: Tariff
+
+# Each station in the list is a dictionary with a single key-value pair
+class Station(RootModel[Dict[str, StationDetails]]):
+    pass
+
+class Schema(BaseModel):
+    pewpew_id: str
+    address: str
+    stations: List[Station]
+
+# Independent function for upserting a schema
+def upsert_schema_in_db(schema: Schema):
+    """
+    Create or update a document in MongoDB.
+
+    :param schema: The schema to be upserted.
+    :return: A message indicating whether the document was created or updated.
+    """
+    collection = mongo_connect("uxpropertegypt")
+    schema_dict = schema.dict(by_alias=True)
+    existing_document = collection.find_one({"pewpew_id": schema.pewpew_id})
+
+    if existing_document:
+        # Update the existing document
+        collection.update_one(
+            {"pewpew_id": schema.pewpew_id},
+            {"$set": schema_dict}
+        )
+        return "Document updated successfully."
+    else:
+        # Insert a new document
+        collection.insert_one(schema_dict)
+        return "Document created successfully."
+
+# FastAPI endpoint using the independent function
+@app.post("/update-schema/")
+async def upsert_schema_endpoint(schema: Schema):
+    try:
+        result_message = upsert_schema_in_db(schema)
+        return {"message": result_message}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
