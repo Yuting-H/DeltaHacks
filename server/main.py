@@ -409,7 +409,7 @@ async def get_chargers_on_route(origin: str, destination: str, max_distance: flo
             "chargers": chargers_near_route
         }
 
-except Exception as e:
+    except Exception as e:
         logging.error(f"Error in /chargers-on-route: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
