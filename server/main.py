@@ -80,12 +80,36 @@ def mongo_connect(collection="stations"):
         raise Exception(f"Failed to connect to MongoDB: {e}")
 
 
+# Function to initialize the schema if it doesn't exist
+# Function to upsert park data into the database
+def upsert_schema_in_db(park_data):
+    """
+    Upsert the park data based on its id (insert if new, update if existing).
+    """
+    stations_collection = mongo_connect("uxpropertegypt")
+    # Get the park's ID
+    park_id = park_data.get("id")
+
+    # If the park does not have an ID, raise an error
+    if not park_id:
+        raise ValueError("Park data must have an 'id' field")
+
+    # Perform the upsert operation
+    stations_collection.update_one(
+        {"id": park_id},  # Filter by park's unique 'id'
+        {
+            "$set": park_data  # Update the park data
+        },
+        upsert=True  # Create a new document if no matching document exists
+    )
+    print(f"Upserted park with ID: {park_id}")
+
+# Function to process and store parks data
 @app.post("/find_parks")
 async def find_parks(input_data: dict):
     """
     Zoom into each cluster until parks are found and store all unique parks in a file.
     """
-    stations_collection = mongo_connect("stations")
     bounds = input_data["bounds"]
     unique_parks = set()  # Use a set to store unique parks by ID or unique identifier
     zoom_level = get_bounds_zoom_level(bounds, {"height": 800, "width": 800})
@@ -166,14 +190,14 @@ async def find_parks(input_data: dict):
 
     number_of_parks = 0
 
-    # Insert unique parks into the MongoDB time-series collection
+    # Upsert unique parks into the MongoDB time-series collection
     for park_json in unique_parks:
         park = json.loads(park_json)
         park['timestamp'] = datetime.utcnow()  # Add a timestamp for the time-series
         park['metadata'] = {"location": park.get("name", "Unknown")}  # Add metadata (e.g., location name)
 
-        # Insert the park data into the time-series collection
-        stations_collection.insert_one(park)
+        # Upsert the park data into the time-series collection
+        upsert_schema_in_db(park)
         number_of_parks += 1
 
     return {"message": f"Found and stored {number_of_parks} unique parks."}
@@ -269,36 +293,36 @@ async def get_station_details(station_id: str):
     raise HTTPException(status_code=404, detail="Charging station not found.")
 
 
-# Independent function for upserting the data into MongoDB
-def upsert_schema_in_db(schema: Schema):
-    """
-    Insert or update a schema document in MongoDB.
-
-    :param schema: The schema to be inserted or updated.
-    :return: A message indicating the result of the operation.
-    """
-    collection = mongo_connect("uxpropertegypt")
-    schema_dict = schema.dict(by_alias=True)
-
-    # Perform upsert: insert if it doesn't exist, otherwise update
-    result = collection.update_one(
-        {"id": schema.id},  # Search by `id`
-        {"$set": schema_dict},  # Set new values, replace existing ones
-        upsert=True  # Create the document if it doesn't exist
-    )
-
-    if result.matched_count > 0:
-        return "Document updated successfully."
-    elif result.upserted_id:
-        return "Document created successfully."
-    else:
-        return "No changes were made."
-
-# FastAPI endpoint to insert or update the schema
-@app.post("/upsert-schema/")
-async def upsert_schema_endpoint(schema: Schema):
-    try:
-        result_message = upsert_schema_in_db(schema)
-        return {"message": result_message}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# # Independent function for upserting the data into MongoDB
+# def upsert_schema_in_db(schema: Schema):
+#     """
+#     Insert or update a schema document in MongoDB.
+#
+#     :param schema: The schema to be inserted or updated.
+#     :return: A message indicating the result of the operation.
+#     """
+#     collection = mongo_connect("uxpropertegypt")
+#     schema_dict = schema.dict(by_alias=True)
+#
+#     # Perform upsert: insert if it doesn't exist, otherwise update
+#     result = collection.update_one(
+#         {"id": schema.id},  # Search by `id`
+#         {"$set": schema_dict},  # Set new values, replace existing ones
+#         upsert=True  # Create the document if it doesn't exist
+#     )
+#
+#     if result.matched_count > 0:
+#         return "Document updated successfully."
+#     elif result.upserted_id:
+#         return "Document created successfully."
+#     else:
+#         return "No changes were made."
+#
+# # FastAPI endpoint to insert or update the schema
+# @app.post("/upsert-schema/")
+# async def upsert_schema_endpoint(schema: Schema):
+#     try:
+#         result_message = upsert_schema_in_db(schema)
+#         return {"message": result_message}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
