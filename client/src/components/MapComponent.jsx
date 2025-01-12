@@ -66,7 +66,6 @@ const MapComponent = ({ markers, setMarkers, center }) => {
           setMarkers([]);
           //for each parent station
           response.data.stations.forEach((element) => {
-            console.log(element);
             let freeChargers = 0;
             let description = element.name + " \n";
             element.stations.forEach((element) => {

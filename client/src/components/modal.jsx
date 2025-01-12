@@ -25,26 +25,7 @@ const ModalExample = (marker) => {
           <div style={modalStyles.overlay}>
             <div style={modalStyles.modal}>
               <h2>Submit Charging Information</h2>
-              <div>
-                <label>
-                  Charging Amount:
-                  <input
-                    type="number"
-                    name="amount"
-                    required
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Charging Time:
-                  <input
-                    type="time"
-                    name="time"
-                    required
-                  />
-                </label>
-              </div>
+              <div></div>
               <button type="submit">Submit</button>
 
               <button
