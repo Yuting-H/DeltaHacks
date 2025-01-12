@@ -1,9 +1,9 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import MapComponent from "./components/MapComponent";
 import MarkerListComponent from "./components/MarkerListComponent";
 import MapView from "./components/MapView";
+import LoyaltyProgram from "./components/LoyaltyProgram"; // Import the LoyaltyProgram component
 
 const App = () => {
   // Initial markers
@@ -21,19 +21,29 @@ const App = () => {
   return (
     <Router>
       <div>
+        {/* Navigation Bar */}
         <nav style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
           <Link
             to="/"
-            style={{ marginRight: "10px" }}>
+            style={{ marginRight: "10px" }}
+          >
             Home
           </Link>
           <Link
             to="/map-view"
-            style={{ marginRight: "10px" }}>
+            style={{ marginRight: "10px" }}
+          >
             Route MapView
+          </Link>
+          <Link
+            to="/loyalty-program"
+            style={{ marginRight: "10px" }}
+          >
+            Loyalty Program
           </Link>
         </nav>
 
+        {/* Routes */}
         <Routes>
           {/* Home Page with MapComponent and MarkerList */}
           <Route
@@ -59,6 +69,12 @@ const App = () => {
           <Route
             path="/map-view"
             element={<MapView />}
+          />
+
+          {/* Loyalty Program Page */}
+          <Route
+            path="/loyalty-program"
+            element={<LoyaltyProgram />}
           />
         </Routes>
       </div>

@@ -1,0 +1,119 @@
+.loyalty-program-container {
+    font-family: "Arial", sans-serif;
+    padding: 20px;
+    background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out; /* Fade-in animation */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    animation: slideIn 1s ease-in-out; /* Slide-in animation */
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out 0.5s; /* Delay for the description */
+  }
+  
+  .tiers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .tier {
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+    animation: popIn 1s ease-in-out;
+  }
+  
+  @keyframes popIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .tier:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .tier-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px; /* Adjust spacing */
+  }
+  
+  .tier ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .tier ul li {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 5px;
+  }
+  
+  /* Tier Colors */
+  .bronze {
+    background: #f4a261;
+    color: black; /* Changed to black */
+  }
+  
+  .silver {
+    background: #c0c0c0;
+    color: black;
+  }
+  
+  .gold {
+    background: #ffd700;
+    color: black;
+  }
+  
+  .platinum {
+    background: #e5e4e2;
+    color: black;
+  }
+  
