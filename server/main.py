@@ -22,6 +22,8 @@ print(f"MONGO_DB_USER: {MONGO_DB_USER}")
 print(f"MONGO_DB_PASSWORD: {MONGO_DB_PASSWORD}")
 print(f"MONGO_DB_URI: {MONGO_DB_URI}")
 
+origins = ["*"]
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -32,7 +34,9 @@ app.add_middleware(
 )
 
 API_URL = "https://emobility.flo.ca/v3.0/map/markers/search"
-uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}"
+uri = "mongodb+srv://deltaback:aoqQZ9PfaKZTCFxA@electricbuddy.0qhs8.mongodb.net/?retryWrites=true&w=majority&appName=electricbuddy"
+
+print(uri)
 
 # MongoDB Client Setup
 client = MongoClient(uri, server_api=ServerApi('1'))

@@ -24,6 +24,13 @@ const RecenterMap = ({ center }) => {
 const MapComponent = ({ markers, center }) => {
   const mapRef = useRef();
 
+  const addMarker = (position) => {
+    setMarkers((prevMarkers) => [
+      ...prevMarkers,
+      { position, popup: `New Marker ${prevMarkers.length + 1}` },
+    ]);
+  };
+
   const LogBounds = () => {
     const map = useMapEvents({
       moveend: () => {
@@ -61,6 +68,17 @@ const MapComponent = ({ markers, center }) => {
           .post("https://emobility.flo.ca/v3.0/map/markers/search", postData)
           .then((response) => {
             console.log("Response:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        axios
+          .get(
+            "https://emobility.flo.ca/v3.0/parks/station/1e0335b4-b6b4-4db3-b32d-9e5bb90ba582"
+          )
+          .then((response) => {
+            console.log("Response:", response);
           })
           .catch((error) => {
             console.error("Error:", error);
