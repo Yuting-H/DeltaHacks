@@ -21,14 +21,12 @@ const RecenterMap = ({ center }) => {
   return null;
 };
 
-const MapComponent = ({ markers, center }) => {
+const MapComponent = ({ markers, setMarkers, center }) => {
   const mapRef = useRef();
 
-  const addMarker = (position) => {
-    setMarkers((prevMarkers) => [
-      ...prevMarkers,
-      { position, popup: `New Marker ${prevMarkers.length + 1}` },
-    ]);
+  const addMarker = (newMarkers) => {
+    console.log("Adding marker", newMarkers);
+    setMarkers(newMarkers);
   };
 
   const LogBounds = () => {
@@ -65,20 +63,24 @@ const MapComponent = ({ markers, center }) => {
         };
 
         axios
-          .post("https://emobility.flo.ca/v3.0/map/markers/search", postData)
-          .then((response) => {
-            console.log("Response:", response.data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-
-        axios
           .get(
-            "https://emobility.flo.ca/v3.0/parks/station/1e0335b4-b6b4-4db3-b32d-9e5bb90ba582"
+            "http://localhost:8000/stations?lat=43.260402&lon=-79.924763&radius_km=2"
           )
           .then((response) => {
-            console.log("Response:", response);
+            console.log("Response:", response.data.stations);
+            setMarkers([]);
+            let newMarkers = [];
+            response.data.stations.forEach((element) => {
+              console.log(element);
+              newMarkers.push({
+                position: [
+                  element.geoCoordinates.latitude,
+                  element.geoCoordinates.longitude,
+                ],
+                popup: element.name,
+              });
+            });
+            addMarker(newMarkers);
           })
           .catch((error) => {
             console.error("Error:", error);
