@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import Modal from "./modal.jsx";
 
 const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
   return (
@@ -26,19 +27,8 @@ const MarkerListComponent = ({ markers, onMarkerClick, handleFeedBack }) => {
             }}
             onClick={() => onMarkerClick(marker.position)}>
             {marker.popup}
-            <button
-              //get request
-              onClick={() => {
-                axios
-                  .get("http://localhost:8000/data/" + marker.id)
-                  .then((response) => {
-                    console.log(response);
-                  });
-                console.log(marker.id);
-              }}
-              style={{ display: "block", padding: "4px" }}>
-              Add feedback
-            </button>
+
+            <Modal marker={marker} />
           </li>
         ))}
       </ul>
