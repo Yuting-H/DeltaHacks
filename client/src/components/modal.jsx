@@ -64,10 +64,11 @@ const ModalExample = (marker) => {
                               onChange={(e) =>
                                   handleStatusChange(station.id, e.target.value)
                               }
-                              style={{ marginLeft: "10px" }}>
+                              style={{marginLeft: "10px"}}>
                             <option value="Available">Available</option>
                             <option value="In-Use">In-Use</option>
                             <option value="Degraded">Degraded</option>
+                            <option value="Unknown">Unknown</option>
                           </select>
                         </div>
                     ))}
