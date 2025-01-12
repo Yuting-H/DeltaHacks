@@ -103,10 +103,17 @@ class Station(BaseModel):
     name: str
     chargingSpeed: int
 
+class Address(BaseModel):
+    address1: str
+    address2: str
+    city: str
+    country: str
+    province: str
+    postalCode: str
 
 class DataModel(BaseModel):
     id: str
-    address: str
+    address: Address
     geoCoordinates: GeoCoordinates
     metadata: dict
     name: str
@@ -363,7 +370,7 @@ def is_near_route(charger_coords, route_coords, max_distance=0.5):
 # 5. Chargers Along Route Endpoint
 @app.get("/chargers-on-route")
 async def get_chargers_on_route(origin: str, destination: str, max_distance: float = 0.5):
-    stations_collection = mongo_connect("uxpropertegypt")
+    stations_collection = mongo_connect("baobao")
     try:
         origin_coords = validate_address(origin)
         destination_coords = validate_address(destination)
@@ -395,7 +402,7 @@ async def get_stations_within_radius(lat: float = 43.252862718786815, lon: float
     """
     Get charging stations within a given radius (default: 5km) of provided coordinates.
     """
-    stations_collection = mongo_connect("uxpropertegypt")
+    stations_collection = mongo_connect("baobao")
     user_location = (lat, lon)
     stations_within_radius = []
 
@@ -436,7 +443,7 @@ async def get_parent_stations():
     """
     Get a list of parent charging stations with all their chargers included.
     """
-    stations_collection = mongo_connect("uxpropertegypt")
+    stations_collection = mongo_connect("baobao")
     try:
         parent_stations = stations_collection.find()
         results = []
@@ -471,7 +478,7 @@ async def get_station_details(station_id: str):
     """
     Get details of a specific charging station by its ID, including nested stations.
     """
-    stations_collection = mongo_connect("uxpropertegypt")
+    stations_collection = mongo_connect("baobao")
     try:
         for parent_station in stations_collection.find():
             for substation in parent_station.get("stations", []):
