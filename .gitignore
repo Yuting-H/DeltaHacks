@@ -370,5 +370,8 @@ __pycache__/
 
 *.idea
 
+<<<<<<< Updated upstream
 #virtualenv
+=======
+>>>>>>> Stashed changes
 venv/
