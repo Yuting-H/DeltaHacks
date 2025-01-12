@@ -80,13 +80,13 @@ def mongo_connect(collection="stations"):
         raise Exception(f"Failed to connect to MongoDB: {e}")
 
 
-# Function to initialize the schema if it doesn't exist
-# Function to upsert park data into the database
 def upsert_schema_in_db(park_data):
     """
-    Upsert the park data based on its id (insert if new, update if existing).
+    Insert park data if its ID does not exist in the collection.
+    If the ID already exists, do nothing.
     """
     stations_collection = mongo_connect("uxpropertegypt")
+
     # Get the park's ID
     park_id = park_data.get("id")
 
@@ -94,15 +94,17 @@ def upsert_schema_in_db(park_data):
     if not park_id:
         raise ValueError("Park data must have an 'id' field")
 
-    # Perform the upsert operation
-    stations_collection.update_one(
-        {"id": park_id},  # Filter by park's unique 'id'
-        {
-            "$set": park_data  # Update the park data
-        },
-        upsert=True  # Create a new document if no matching document exists
-    )
-    print(f"Upserted park with ID: {park_id}")
+    # Check if a document with the same ID already exists
+    existing_park = stations_collection.find_one({"id": park_id})
+
+    if existing_park:
+        print(f"Park with ID: {park_id} already exists. Skipping insert.")
+        return  # Do nothing if the park already exists
+
+    # Perform the insertion if no document with the same ID exists
+    stations_collection.insert_one(park_data)
+    print(f"Inserted new park with ID: {park_id}")
+
 
 # Function to process and store parks data
 @app.post("/find_parks")
