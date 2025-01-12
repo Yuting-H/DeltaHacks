@@ -1,4 +1,3 @@
-
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 import httpx
@@ -12,9 +11,9 @@ from pydantic import BaseModel, RootModel
 from typing import List, Dict, Optional
 from datetime import datetime
 from bson import ObjectId
-import os
 from geopy.distance import geodesic
 import os
+
 load_dotenv()
 
 MONGO_DB_USER = os.getenv("MONGO_DB_USER")
@@ -37,15 +36,58 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Construct MongoDB URI
+uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}"
 API_URL = "https://emobility.flo.ca/v3.0/map/markers/search"
 uri = "mongodb+srv://deltaback:aoqQZ9PfaKZTCFxA@electricbuddy.0qhs8.mongodb.net/?retryWrites=true&w=majority&appName=electricbuddy"
 
-print(uri)
+# Pydantic models for request validation
+class TariffDescription(BaseModel):
+    fr: str
+    en: str
 
-# MongoDB Client Setup
-client = MongoClient(uri, server_api=ServerApi('1'))
-db = client['betabase']  # Accessing the existing database 'betabase'
-stations_collection = db['stations']  # Accessing the 'stations' collection
+
+class Tariff(BaseModel):
+    id: str
+    description: TariffDescription
+
+
+class Connector(BaseModel):
+    type: str
+    powerType: str
+    power: int
+
+
+class StationDetails(BaseModel):
+    status: str
+    level: str
+    lastCheckIn: str
+    id: str
+    connectors: List[Connector]
+    tariff: Tariff
+
+
+# Each station in the list is a dictionary with a single key-value pair
+class Station(RootModel[Dict[str, StationDetails]]):
+    pass
+
+
+class Schema(BaseModel):
+    pewpew_id: str
+    address: str
+    stations: List[Station]
+
+
+def mongo_connect(collection="stations"):
+    # MongoDB connection setup
+    try:
+        client = MongoClient(uri, server_api=ServerApi("1"))
+        db = client["betabase"]  # Access the database
+        stations_collection = db[collection]  # Access the stations collection
+        print("MongoDB connection successful!")
+        return stations_collection
+    except Exception as e:
+        raise Exception(f"Failed to connect to MongoDB: {e}")
 
 
 @app.post("/find_parks")
@@ -53,6 +95,7 @@ async def find_parks(input_data: dict):
     """
     Zoom into each cluster until parks are found and store all unique parks in a file.
     """
+    stations_collection = mongo_connect("stations")
     bounds = input_data["bounds"]
     unique_parks = set()  # Use a set to store unique parks by ID or unique identifier
     zoom_level = get_bounds_zoom_level(bounds, {"height": 800, "width": 800})
@@ -131,6 +174,8 @@ async def find_parks(input_data: dict):
     # Start with the initial bounds
     await zoom_into_cluster(bounds)
 
+    number_of_parks = 0
+
     # Insert unique parks into the MongoDB time-series collection
     for park_json in unique_parks:
         park = json.loads(park_json)
@@ -139,24 +184,10 @@ async def find_parks(input_data: dict):
 
         # Insert the park data into the time-series collection
         stations_collection.insert_one(park)
-        print(park)
+        number_of_parks += 1
 
+    return {"message": f"Found and stored {number_of_parks} unique parks."}
 
-# Construct MongoDB URI
-uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}"
-
-def mongo_connect(collection="stations"):
-    # MongoDB connection setup
-    try:
-        client = MongoClient(uri, server_api=ServerApi("1"))
-        db = client["betabase"]  # Access the database
-        stations_collection = db[collection]  # Access the stations collection
-        print("MongoDB connection successful!")
-        return stations_collection
-    except Exception as e:
-        raise Exception(f"Failed to connect to MongoDB: {e}")
-
-app = FastAPI()
 
 @app.get("/")
 async def root():
@@ -248,37 +279,15 @@ async def get_station_details(station_id: str):
     raise HTTPException(status_code=404, detail="Charging station not found.")
 
 
+# FastAPI endpoint using the independent function
+@app.post("/update-schema/")
+async def upsert_schema_endpoint(schema: Schema):
+    try:
+        result_message = upsert_schema_in_db(schema)
+        return {"message": result_message}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-# Pydantic models for request validation
-class TariffDescription(BaseModel):
-    fr: str
-    en: str
-
-class Tariff(BaseModel):
-    id: str
-    description: TariffDescription
-
-class Connector(BaseModel):
-    type: str
-    powerType: str
-    power: int
-
-class StationDetails(BaseModel):
-    status: str
-    level: str
-    lastCheckIn: str
-    id: str
-    connectors: List[Connector]
-    tariff: Tariff
-
-# Each station in the list is a dictionary with a single key-value pair
-class Station(RootModel[Dict[str, StationDetails]]):
-    pass
-
-class Schema(BaseModel):
-    pewpew_id: str
-    address: str
-    stations: List[Station]
 
 # Independent function for upserting a schema
 def upsert_schema_in_db(schema: Schema):
@@ -303,12 +312,3 @@ def upsert_schema_in_db(schema: Schema):
         # Insert a new document
         collection.insert_one(schema_dict)
         return "Document created successfully."
-
-# FastAPI endpoint using the independent function
-@app.post("/update-schema/")
-async def upsert_schema_endpoint(schema: Schema):
-    try:
-        result_message = upsert_schema_in_db(schema)
-        return {"message": result_message}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
