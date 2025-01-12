@@ -4,11 +4,12 @@ import MarkerListComponent from "./components/MarkerListComponent";
 
 const App = () => {
   // Initial markers
-  const markers = [
+  const initialMarkers = [
     { position: [43.25, -79.84], popup: "Marker 1" },
     { position: [43.255, -79.845], popup: "Marker 2" },
     { position: [43.245, -79.84], popup: "Marker 3" },
   ];
+  const [markers, setMarkers] = useState(initialMarkers);
 
   const [selectedMarker, setSelectedMarker] = useState(null);
 
@@ -24,6 +25,7 @@ const App = () => {
       />
       <MapComponent
         markers={markers}
+        setMarkers={setMarkers}
         center={selectedMarker}
       />
     </div>
