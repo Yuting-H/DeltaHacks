@@ -420,12 +420,14 @@ async def get_stations_within_radius(lat: float = 43.252862718786815, lon: float
         )
         distance = geodesic(user_location, station_location).km
         if distance <= radius_km:
+            address = f"{station['address']['address1']} {station['address']['address2']}, {station['address']['city']}, {station['address']['province']} {station['address']['postalCode']}, {station['address']['country']}".strip()
             stations_within_radius.append({
                 "id": station["id"],
                 "name": station["name"],
                 "geoCoordinates": station["geoCoordinates"],
                 "distance_km": round(distance, 2),
                 "stations": station["stations"],
+                "address": address
             })
 
     if not stations_within_radius:

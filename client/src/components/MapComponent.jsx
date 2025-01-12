@@ -67,13 +67,14 @@ const MapComponent = ({ markers, setMarkers, center }) => {
           //for each parent station
           response.data.stations.forEach((element) => {
             let freeChargers = 0;
-            let description = element.name + " \n";
+            let description = element.name + "<br />";
             element.stations.forEach((element) => {
               if (element.status == "Available") {
                 freeChargers++;
               }
             });
-            description += "\n \n Free Chargers: " + freeChargers + "\n";
+            description += element.address + "<br />";
+            description += "Free Chargers: " + freeChargers + "<br />";
             addMarker(
               [
                 element.geoCoordinates.latitude,
