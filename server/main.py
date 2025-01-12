@@ -4,7 +4,6 @@ import httpx
 import json
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
-from datetime import datetime
 from calculus import get_bounds_zoom_level
 from dotenv import load_dotenv
 from pydantic import BaseModel, RootModel
@@ -67,6 +66,37 @@ class Schema(BaseModel):
     metadata: Metadata
     address: str  # New field for address
 
+class Station(BaseModel):
+    id: str
+    connectors: List[str]
+    status: str
+    level: str
+    freeOfCharge: bool
+    name: str
+    chargingSpeed: int
+
+class DataModel(BaseModel):
+    id: str
+    address: str
+    geoCoordinates: GeoCoordinates
+    metadata: dict
+    name: str
+    networkId: int
+    stations: List[Station]
+    timestamp: Optional[int]
+
+    # Custom method to serialize datetime to integer timestamp
+    @classmethod
+    def from_mongo(cls, data: dict):
+        # Convert datetime to timestamp
+        if isinstance(data.get("timestamp"), datetime):
+            data["timestamp"] = int(data["timestamp"].timestamp() * 1000)  # Convert to milliseconds
+        return cls(**data)
+
+    def to_mongo(self):
+        # Optionally, convert timestamp back to datetime when saving (if necessary)
+        return self.dict()
+
 
 def mongo_connect(collection="stations"):
     # MongoDB connection setup
@@ -84,8 +114,16 @@ def upsert_schema_in_db(park_data):
     """
     Insert park data if its ID does not exist in the collection.
     If the ID already exists, do nothing.
+    Adds the current timestamp as 'lastUpdated' and ensures the 'address' field is included.
     """
     stations_collection = mongo_connect("uxpropertegypt")
+
+    # Add the current timestamp as 'lastUpdated'
+    park_data["lastUpdated"] = int(datetime.utcnow().timestamp() * 1000)  # Use milliseconds for consistency
+
+    # Ensure an empty 'address' field is present
+    if "address" not in park_data:
+        park_data["address"] = ""
 
     # Get the park's ID
     park_id = park_data.get("id")
@@ -295,36 +333,43 @@ async def get_station_details(station_id: str):
     raise HTTPException(status_code=404, detail="Charging station not found.")
 
 
-# # Independent function for upserting the data into MongoDB
-# def upsert_schema_in_db(schema: Schema):
-#     """
-#     Insert or update a schema document in MongoDB.
-#
-#     :param schema: The schema to be inserted or updated.
-#     :return: A message indicating the result of the operation.
-#     """
-#     collection = mongo_connect("uxpropertegypt")
-#     schema_dict = schema.dict(by_alias=True)
-#
-#     # Perform upsert: insert if it doesn't exist, otherwise update
-#     result = collection.update_one(
-#         {"id": schema.id},  # Search by `id`
-#         {"$set": schema_dict},  # Set new values, replace existing ones
-#         upsert=True  # Create the document if it doesn't exist
-#     )
-#
-#     if result.matched_count > 0:
-#         return "Document updated successfully."
-#     elif result.upserted_id:
-#         return "Document created successfully."
-#     else:
-#         return "No changes were made."
-#
-# # FastAPI endpoint to insert or update the schema
-# @app.post("/upsert-schema/")
-# async def upsert_schema_endpoint(schema: Schema):
-#     try:
-#         result_message = upsert_schema_in_db(schema)
-#         return {"message": result_message}
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
+# Convert MongoDB ObjectId to string
+def mongo_obj_id(obj):
+    if isinstance(obj, ObjectId):
+        return str(obj)
+    return obj
+
+
+# Modify your endpoint to use the custom from_mongo method
+@app.get("/data/{id}", response_model=DataModel)
+async def get_data(id: str):
+    collection = mongo_connect("uxpropertegypt")
+    data = collection.find_one({"id": id})
+    if not data:
+        raise HTTPException(status_code=404, detail="Data not found")
+
+    # Convert MongoDB data to DataModel and handle timestamp serialization
+    data["_id"] = mongo_obj_id(data["_id"])  # Convert Mongo _id to string
+    return DataModel.from_mongo(data)
+
+
+@app.put("/data/{id}", response_model=DataModel)
+async def overwrite_data(id: str, data: DataModel):
+    collection = mongo_connect("uxpropertegypt")
+    # Find the document by its "id"
+    existing_data = collection.find_one({"id": id})
+
+    if not existing_data:
+        raise HTTPException(status_code=404, detail="Data not found")
+
+    # Overwrite the document with the new data
+    update_result = collection.replace_one(
+        {"id": id},  # Filter to find the document by its "id"
+        data.dict()  # Replace the document with the new data (converted to a dictionary)
+    )
+
+    if update_result.modified_count > 0:
+        return data  # Return the full updated data
+    else:
+        raise HTTPException(status_code=400, detail="Failed to overwrite data")
+
