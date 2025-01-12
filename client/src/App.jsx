@@ -16,13 +16,6 @@ const App = () => {
 
   const [selectedMarker, setSelectedMarker] = useState(null);
 
-  const [markers, setMarkers] = useState([
-    {
-      position: [43.265505, -79.918187],
-      popup: "Marker 1",
-    },
-  ]);
-
   const handleMarkerClick = (position) => {
     setSelectedMarker(position);
   };
