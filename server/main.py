@@ -5,7 +5,8 @@ from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 import os
-import requests
+import googlemaps
+import polyline
 import re
 
 # Configure logging
@@ -21,6 +22,8 @@ GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
 # MongoDB connection setup
 uri = f"mongodb+srv://{MONGO_DB_USER}:{MONGO_DB_PASSWORD}@{MONGO_DB_URI}/?retryWrites=true&w=majority"
+
+gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
 
 def mongo_connect(collection="stations"):
     """
@@ -63,107 +66,68 @@ def validate_address(address):
     if lat_lng_pattern.match(address):
         lat, lng = map(float, address.split(','))
         return {"lat": lat, "lng": lng}
-
-    url = "https://maps.googleapis.com/maps/api/geocode/json"
-    params = {"address": address, "key": GOOGLE_MAPS_API_KEY}
-    response = requests.get(url, params=params)
-    data = response.json()
-
-    logging.debug(f"Geocoding API response for {address}: {data}")
-
-    if data.get("status") != "OK":
-        error_message = data.get("error_message", "Unknown error")
-        logging.error(f"Geocoding API error: {data['status']} - {error_message}")
-        raise HTTPException(status_code=400, detail=f"400: Invalid address: {address}")
-
-    return data["results"][0]["geometry"]["location"]
+    geocode_result = gmaps.geocode(address)
+    if not geocode_result:
+        raise HTTPException(status_code=400, detail=f"Invalid address: {address}")
+    location = geocode_result[0]["geometry"]["location"]
+    return {"lat": location["lat"], "lng": location["lng"]}
 
 # 3. Get Route Between Two Locations
-def get_route(origin, destination):
+def get_route_googlemaps(origin, destination):
     """
-    Get the route coordinates between an origin and destination.
+    Fetch a driving route between two locations using Google Maps Directions API.
     """
-    origin_coords = validate_address(origin)
-    destination_coords = validate_address(destination)
-
-    url = "https://maps.googleapis.com/maps/api/directions/json"
-    params = {
-        "origin": f"{origin_coords['lat']},{origin_coords['lng']}",
-        "destination": f"{destination_coords['lat']},{destination_coords['lng']}",
-        "key": GOOGLE_MAPS_API_KEY,
-    }
-    response = requests.get(url, params=params)
-    data = response.json()
-
-    logging.debug(f"Google Maps Directions API response: {data}")
-
-    if data.get("status") != "OK":
-        error_message = data.get("error_message", "Unknown error")
-        logging.error(f"Failed to retrieve route: {data['status']} - {error_message}")
-        raise HTTPException(status_code=500, detail=f"Google Maps API error: {error_message}")
-
     try:
-        return [
-            step["end_location"]
-            for route in data["routes"]
-            for leg in route["legs"]
-            for step in leg["steps"]
-        ]
-    except KeyError as e:
-        logging.error(f"Error parsing Google Maps API response: {e}")
-        raise HTTPException(status_code=500, detail="Error parsing route data.")
+        directions = gmaps.directions(origin, destination, mode="driving")
+        if not directions or "overview_polyline" not in directions[0]:
+            raise ValueError("No route found in Google Maps response.")
+        encoded_polyline = directions[0]["overview_polyline"]["points"]
+        route_coords = polyline.decode(encoded_polyline)
+        logging.debug(f"Decoded route coordinates: {route_coords}")
+        return route_coords
+    except Exception as e:
+        logging.error(f"Error fetching route from Google Maps: {e}")
+        raise HTTPException(status_code=500, detail="Error fetching route from Google Maps API.")
 
 # 4. Check if Charger is Near Route
-def is_near_route(charger_coords, route_coords, max_distance=0.1):
+def is_near_route(charger_coords, route_coords, max_distance=0.5):
     """
     Determine if a charger is within the specified distance of the route.
     """
     for route_point in route_coords:
         distance = geodesic(
             (charger_coords["latitude"], charger_coords["longitude"]),
-            (route_point["lat"], route_point["lng"])
+            (route_point[0], route_point[1])
         ).km
-        logging.debug(f"Distance from charger ({charger_coords}) to route point ({route_point}): {distance:.2f} km")
         if distance <= max_distance:
             return True
     return False
 
 # 5. Chargers Along Route Endpoint
 @app.get("/chargers-on-route")
-async def get_chargers_on_route(origin: str, destination: str, max_distance: float = 0.1):
-    """
-    Find EV chargers along a route between origin and destination.
-    """
-    stations_collection = mongo_connect()
+async def get_chargers_on_route(origin: str, destination: str, max_distance: float = 0.5):
+    stations_collection = mongo_connect("uxpropertegypt")
     try:
-        logging.info(f"Received request: origin={origin}, destination={destination}, max_distance={max_distance}")
-
-        route_coords = get_route(origin, destination)
-        logging.debug(f"Route coordinates: {route_coords}")
-
+        origin_coords = validate_address(origin)
+        destination_coords = validate_address(destination)
+        route_coords = get_route_googlemaps(origin, destination)
         chargers = list(stations_collection.find())
-        logging.debug(f"Fetched chargers: {chargers}")
-
         chargers_near_route = []
         for charger in chargers:
+            if "geoCoordinates" not in charger or not isinstance(charger["geoCoordinates"], dict):
+                continue
             if is_near_route(charger["geoCoordinates"], route_coords, max_distance):
                 chargers_near_route.append({
                     "id": charger["id"],
                     "name": charger["name"],
                     "geoCoordinates": charger["geoCoordinates"]
                 })
-
-        logging.debug(f"Filtered chargers near route: {chargers_near_route}")
-
         if not chargers_near_route:
-            logging.warning("No chargers found along the route.")
-            raise HTTPException(status_code=404, detail="404: No chargers found along the route.")
-
+            raise HTTPException(status_code=404, detail="No chargers found along the route.")
         return {
             "route": route_coords,
             "chargers": chargers_near_route
         }
-
     except Exception as e:
         logging.error(f"Error in /chargers-on-route: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -174,7 +138,7 @@ async def get_stations_within_radius(lat: float, lon: float, radius_km: float = 
     """
     Get charging stations within a given radius (default: 5km) of provided coordinates.
     """
-    stations_collection = mongo_connect()
+    stations_collection = mongo_connect("uxpropertegypt")
     user_location = (lat, lon)
     stations_within_radius = []
 
@@ -215,7 +179,7 @@ async def get_parent_stations():
     """
     Get a list of parent charging stations with all their chargers included.
     """
-    stations_collection = mongo_connect()
+    stations_collection = mongo_connect("uxpropertegypt")
     try:
         parent_stations = stations_collection.find()
         results = []
@@ -250,7 +214,7 @@ async def get_station_details(station_id: str):
     """
     Get details of a specific charging station by its ID, including nested stations.
     """
-    stations_collection = mongo_connect()
+    stations_collection = mongo_connect("uxpropertegypt")
     try:
         for parent_station in stations_collection.find():
             for substation in parent_station.get("stations", []):
